@@ -13,14 +13,18 @@
     <ClCompile Include="Identity.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
     <ClCompile Include="Stats.cpp">
       <Filter>model</Filter>
     </ClCompile>
     <ClCompile Include="Players.cpp">
       <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayerList.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSmallProfile.cpp">
+      <Filter>view</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +75,21 @@
     <QtUic Include="Overwatch2Ballancer.ui">
       <Filter>view</Filter>
     </QtUic>
+    <QtUic Include="PlayerList.ui">
+      <Filter>view</Filter>
+    </QtUic>
+    <QtUic Include="PlayerSmallProfile.ui">
+      <Filter>view</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Overwatch2Ballancer.h">
+      <Filter>view\headers</Filter>
+    </QtMoc>
+    <QtMoc Include="PlayerList.h">
+      <Filter>view\headers</Filter>
+    </QtMoc>
+    <QtMoc Include="PlayerSmallProfile.h">
       <Filter>view\headers</Filter>
     </QtMoc>
   </ItemGroup>

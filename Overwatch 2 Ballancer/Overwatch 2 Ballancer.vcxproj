@@ -87,7 +87,9 @@
   <ItemGroup>
     <ClCompile Include="Identity.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerList.cpp" />
     <ClCompile Include="Players.cpp" />
+    <ClCompile Include="PlayerSmallProfile.cpp" />
     <ClCompile Include="Role.cpp" />
     <ClCompile Include="Stats.cpp" />
     <QtRcc Include="Overwatch2Ballancer.qrc" />
@@ -95,11 +97,15 @@
     <QtMoc Include="Overwatch2Ballancer.h" />
     <ClCompile Include="Overwatch2Ballancer.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="PlayerList.ui" />
+    <QtUic Include="PlayerSmallProfile.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Identity.h" />
     <ClInclude Include="Player.h" />
+    <QtMoc Include="PlayerList.h" />
     <ClInclude Include="Players.h" />
+    <QtMoc Include="PlayerSmallProfile.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Role.h" />
     <ClInclude Include="Stats.h" />
