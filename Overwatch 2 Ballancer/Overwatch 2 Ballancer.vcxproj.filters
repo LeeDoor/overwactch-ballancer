@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Role.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Overwatch2Ballancer.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="Identity.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Players.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="model">
+      <UniqueIdentifier>{5fb4c2b6-343b-4722-86ca-d0e17bbd7424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="model\headers">
+      <UniqueIdentifier>{d445b29b-c3a3-4847-ab10-c53ac725114e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view">
+      <UniqueIdentifier>{4649ac8c-da59-42ed-af6d-fc7bf63b39ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view\headers">
+      <UniqueIdentifier>{3a049e3f-12bf-4b1f-8cb5-1a82a7821769}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Role.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Identity.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Stats.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Players.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Overwatch 2 Ballancer.rc">
+      <Filter>view</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Overwatch2Ballancer.qrc">
+      <Filter>view</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="Overwatch2Ballancer.ui">
+      <Filter>view</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Overwatch2Ballancer.h">
+      <Filter>view\headers</Filter>
+    </QtMoc>
+  </ItemGroup>
+</Project>
