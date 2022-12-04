@@ -86,32 +86,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Identity.cpp" />
+    <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerList.cpp" />
+    <ClCompile Include="PlayerNode.cpp" />
     <ClCompile Include="Players.cpp" />
-    <ClCompile Include="PlayerSmallProfile.cpp" />
     <ClCompile Include="Role.cpp" />
+    <ClCompile Include="ScrollableSectionList.cpp" />
+    <ClCompile Include="StackSectionList.cpp" />
     <ClCompile Include="Stats.cpp" />
-    <QtRcc Include="Overwatch2Ballancer.qrc" />
-    <QtUic Include="Overwatch2Ballancer.ui" />
-    <QtMoc Include="Overwatch2Ballancer.h" />
-    <ClCompile Include="Overwatch2Ballancer.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="PlayerList.ui" />
-    <QtUic Include="PlayerSmallProfile.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Identity.h" />
+    <QtMoc Include="MainWindow.h" />
     <ClInclude Include="Player.h" />
-    <QtMoc Include="PlayerList.h" />
+    <QtMoc Include="PlayerNode.h" />
     <ClInclude Include="Players.h" />
-    <QtMoc Include="PlayerSmallProfile.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Role.h" />
+    <QtMoc Include="StackSectionList.h" />
+    <QtMoc Include="ScrollableSectionList.h" />
     <ClInclude Include="Stats.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Overwatch 2 Ballancer.rc" />
+    <QtUic Include="MainWindow.ui" />
+    <QtUic Include="PlayerNode.ui" />
+    <QtUic Include="ScrollableSectionList.ui" />
+    <QtUic Include="StackSectionList.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

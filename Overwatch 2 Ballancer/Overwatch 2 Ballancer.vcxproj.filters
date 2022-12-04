@@ -7,9 +7,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="Overwatch2Ballancer.cpp">
-      <Filter>view</Filter>
-    </ClCompile>
     <ClCompile Include="Identity.cpp">
       <Filter>model</Filter>
     </ClCompile>
@@ -20,10 +17,16 @@
       <Filter>model</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PlayerList.cpp">
+    <ClCompile Include="MainWindow.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerSmallProfile.cpp">
+    <ClCompile Include="PlayerNode.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="StackSectionList.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollableSectionList.cpp">
       <Filter>view</Filter>
     </ClCompile>
   </ItemGroup>
@@ -39,6 +42,9 @@
     </Filter>
     <Filter Include="view\headers">
       <UniqueIdentifier>{3a049e3f-12bf-4b1f-8cb5-1a82a7821769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view\ui">
+      <UniqueIdentifier>{b40cdfcf-af7c-4ed3-afe9-f5db366d6458}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -62,35 +68,31 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Overwatch 2 Ballancer.rc">
-      <Filter>view</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="Overwatch2Ballancer.qrc">
-      <Filter>view</Filter>
-    </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="Overwatch2Ballancer.ui">
-      <Filter>view</Filter>
-    </QtUic>
-    <QtUic Include="PlayerList.ui">
-      <Filter>view</Filter>
-    </QtUic>
-    <QtUic Include="PlayerSmallProfile.ui">
-      <Filter>view</Filter>
-    </QtUic>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="Overwatch2Ballancer.h">
+    <QtMoc Include="MainWindow.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="PlayerList.h">
+    <QtMoc Include="PlayerNode.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="PlayerSmallProfile.h">
+    <QtMoc Include="StackSectionList.h">
       <Filter>view\headers</Filter>
     </QtMoc>
+    <QtMoc Include="ScrollableSectionList.h">
+      <Filter>view\headers</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="PlayerNode.ui">
+      <Filter>view\ui</Filter>
+    </QtUic>
+    <QtUic Include="MainWindow.ui">
+      <Filter>view\ui</Filter>
+    </QtUic>
+    <QtUic Include="ScrollableSectionList.ui">
+      <Filter>view\ui</Filter>
+    </QtUic>
+    <QtUic Include="StackSectionList.ui">
+      <Filter>view\ui</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>
