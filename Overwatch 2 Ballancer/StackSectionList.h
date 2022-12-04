@@ -11,6 +11,7 @@ public:
 	StackSectionList(QWidget *parent = nullptr);
 	~StackSectionList();
 
+	void addPlayer(QString name, QPixmap* logo);
 private:
 	Ui::StackSectionListClass ui;
 };

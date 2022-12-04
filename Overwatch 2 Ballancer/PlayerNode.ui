@@ -13,17 +13,35 @@
   <property name="windowTitle">
    <string>PlayerNode</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="nick">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>20</y>
-     <width>141</width>
-     <height>21</height>
+     <x>60</x>
+     <y>10</y>
+     <width>221</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>17</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="logo">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
