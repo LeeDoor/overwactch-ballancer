@@ -131,9 +131,4 @@
       <Filter>view\ui</Filter>
     </QtUic>
   </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="Resource.qrc">
-      <Filter>view</Filter>
-    </QtRcc>
-  </ItemGroup>
 </Project>

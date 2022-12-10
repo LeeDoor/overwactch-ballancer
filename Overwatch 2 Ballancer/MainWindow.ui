@@ -23,87 +23,97 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" columnstretch="0,0,0">
-    <item row="0" column="0">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
      <widget class="QTabWidget" name="tabWidget">
-      <widget class="QWidget" name="tab_3">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>Tab 1</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="1" column="0">
+           <layout class="QHBoxLayout" name="AllControlLayout">
+            <item>
+             <widget class="QPushButton" name="ActAddUserButton">
+              <property name="text">
+               <string>добавить</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="ActImportJSONButton">
+              <property name="text">
+               <string>импорт JSON</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="ActExportJSONButton">
+              <property name="text">
+               <string>экспорт JSON</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="ActiveControlLayout">
+            <item>
+             <widget class="QPushButton" name="AllAddUserBurron">
+              <property name="text">
+               <string>добавить</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="AllImportJSONButton">
+              <property name="text">
+               <string>импорт JSON</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="AllExportJSONButton">
+              <property name="text">
+               <string>экспорт JSON</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="PlayersLayout">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <item>
+             <widget class="ScrollableSectionList" name="allPlayers" native="true"/>
+            </item>
+            <item>
+             <widget class="ScrollableSectionList" name="activePlayers" native="true"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="tab_2">
        <attribute name="title">
         <string>Tab 2</string>
        </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="Ballancer" name="widget" native="true"/>
+        </item>
+       </layout>
       </widget>
      </widget>
-    </item>
-    <item row="0" column="1">
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="0">
-       <layout class="QHBoxLayout" name="AllControlLayout">
-        <item>
-         <widget class="QPushButton" name="ActAddUserButton">
-          <property name="text">
-           <string>добавить</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="ActImportJSONButton">
-          <property name="text">
-           <string>импорт JSON</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="ActExportJSONButton">
-          <property name="text">
-           <string>экспорт JSON</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="ActiveControlLayout">
-        <item>
-         <widget class="QPushButton" name="AllAddUserBurron">
-          <property name="text">
-           <string>добавить</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="AllImportJSONButton">
-          <property name="text">
-           <string>импорт JSON</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="AllExportJSONButton">
-          <property name="text">
-           <string>экспорт JSON</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="PlayersLayout">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetDefaultConstraint</enum>
-        </property>
-        <item>
-         <widget class="ScrollableSectionList" name="allPlayers" native="true"/>
-        </item>
-        <item>
-         <widget class="ScrollableSectionList" name="activePlayers" native="true"/>
-        </item>
-       </layout>
-      </item>
-     </layout>
     </item>
    </layout>
   </widget>
@@ -114,6 +124,12 @@
    <class>ScrollableSectionList</class>
    <extends>QWidget</extends>
    <header>ScrollableSectionList.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Ballancer</class>
+   <extends>QWidget</extends>
+   <header>Ballancer.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
