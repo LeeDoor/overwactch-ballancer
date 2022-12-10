@@ -85,6 +85,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ballancer.cpp" />
+    <ClCompile Include="BallancerSlot.cpp" />
+    <ClCompile Include="BallancerStack.cpp" />
+    <ClCompile Include="EditProfileDialog.cpp" />
     <ClCompile Include="Identity.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -97,6 +101,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="EditProfileDialog.h" />
+    <QtMoc Include="Ballancer.h" />
+    <QtMoc Include="BallancerSlot.h" />
+    <QtMoc Include="BallancerStack.h" />
     <ClInclude Include="Identity.h" />
     <QtMoc Include="MainWindow.h" />
     <ClInclude Include="Player.h" />
@@ -109,6 +117,10 @@
     <ClInclude Include="Stats.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="Ballancer.ui" />
+    <QtUic Include="BallancerSlot.ui" />
+    <QtUic Include="BallancerStack.ui" />
+    <QtUic Include="EditProfileDialog.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtUic Include="PlayerNode.ui" />
     <QtUic Include="ScrollableSectionList.ui" />
