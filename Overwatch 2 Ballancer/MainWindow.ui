@@ -29,13 +29,13 @@
       <property name="currentIndex">
        <number>1</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="playersTab">
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>Игроки</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <layout class="QGridLayout" name="gridLayout_2">
+         <layout class="QGridLayout" name="playersList">
           <item row="1" column="0">
            <layout class="QHBoxLayout" name="AllControlLayout">
             <item>
@@ -103,13 +103,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="BallancerTab">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>Баллансер</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="Ballancer" name="widget" native="true"/>
+         <widget class="Ballancer" name="ballancerWidget" native="true"/>
         </item>
        </layout>
       </widget>

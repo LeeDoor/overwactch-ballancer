@@ -38,6 +38,9 @@
     <ClCompile Include="BallancerStack.cpp">
       <Filter>view</Filter>
     </ClCompile>
+    <ClCompile Include="BallanceSlotData.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="model">
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="Players.h">
       <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BallanceSlotData.h">
+      <Filter>view\headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

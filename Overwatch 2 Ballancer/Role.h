@@ -1,5 +1,4 @@
 #pragma once
-
 // описание одной роли
 class Role
 {

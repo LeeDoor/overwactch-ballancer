@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include "ui_Ballancer.h"
+#include "BallancerSlot.h"
 
 class Ballancer : public QWidget
 {
@@ -10,7 +11,7 @@ class Ballancer : public QWidget
 public:
 	Ballancer(QWidget *parent = nullptr);
 	~Ballancer();
-
+	void addSlot(BallanceSlotData data);
 private:
 	Ui::BallancerClass ui;
 };
