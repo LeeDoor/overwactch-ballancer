@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>606</width>
+    <height>491</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,24 +15,10 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+    <widget class="QListWidget" name="listWidget">
+     <property name="resizeMode">
+      <enum>QListView::Adjust</enum>
      </property>
-     <property name="widgetResizable">
-      <bool>false</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>580</width>
-        <height>380</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout"/>
-     </widget>
     </widget>
    </item>
   </layout>

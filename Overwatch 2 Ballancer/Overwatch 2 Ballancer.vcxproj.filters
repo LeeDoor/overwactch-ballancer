@@ -23,9 +23,6 @@
     <ClCompile Include="PlayerNode.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="StackSectionList.cpp">
-      <Filter>view</Filter>
-    </ClCompile>
     <ClCompile Include="ScrollableSectionList.cpp">
       <Filter>view</Filter>
     </ClCompile>
@@ -86,9 +83,6 @@
     <QtMoc Include="PlayerNode.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="StackSectionList.h">
-      <Filter>view\headers</Filter>
-    </QtMoc>
     <QtMoc Include="ScrollableSectionList.h">
       <Filter>view\headers</Filter>
     </QtMoc>
@@ -113,9 +107,6 @@
       <Filter>view\ui</Filter>
     </QtUic>
     <QtUic Include="ScrollableSectionList.ui">
-      <Filter>view\ui</Filter>
-    </QtUic>
-    <QtUic Include="StackSectionList.ui">
       <Filter>view\ui</Filter>
     </QtUic>
     <QtUic Include="EditProfileDialog.ui">

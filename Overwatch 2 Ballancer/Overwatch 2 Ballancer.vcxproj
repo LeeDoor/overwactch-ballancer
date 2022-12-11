@@ -96,7 +96,6 @@
     <ClCompile Include="Players.cpp" />
     <ClCompile Include="Role.cpp" />
     <ClCompile Include="ScrollableSectionList.cpp" />
-    <ClCompile Include="StackSectionList.cpp" />
     <ClCompile Include="Stats.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -112,7 +111,6 @@
     <ClInclude Include="Players.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Role.h" />
-    <QtMoc Include="StackSectionList.h" />
     <QtMoc Include="ScrollableSectionList.h" />
     <ClInclude Include="Stats.h" />
   </ItemGroup>
@@ -124,7 +122,6 @@
     <QtUic Include="MainWindow.ui" />
     <QtUic Include="PlayerNode.ui" />
     <QtUic Include="ScrollableSectionList.ui" />
-    <QtUic Include="StackSectionList.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
