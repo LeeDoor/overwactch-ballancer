@@ -10,8 +10,7 @@ private:
 
 public:
 	BallanceSlotData();
-	BallanceSlotData(
-					unsigned disp, 
+	BallanceSlotData(unsigned disp, 
 					unsigned offp, 
 					unsigned subPair, 
 					unsigned lowPair, 

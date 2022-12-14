@@ -23,22 +23,19 @@
     <ClCompile Include="PlayerNode.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="ScrollableSectionList.cpp">
-      <Filter>view</Filter>
-    </ClCompile>
-    <ClCompile Include="EditProfileDialog.cpp">
-      <Filter>view</Filter>
-    </ClCompile>
     <ClCompile Include="Ballancer.cpp">
       <Filter>view</Filter>
     </ClCompile>
     <ClCompile Include="BallancerSlot.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="BallancerStack.cpp">
+    <ClCompile Include="BallanceSlotData.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="BallanceSlotData.cpp">
+    <ClCompile Include="EditProfileDialog.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollableSectionList.cpp">
       <Filter>view</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,16 +89,13 @@
     <QtMoc Include="ScrollableSectionList.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="EditProfileDialog.h">
-      <Filter>view\headers</Filter>
-    </QtMoc>
     <QtMoc Include="Ballancer.h">
       <Filter>view\headers</Filter>
     </QtMoc>
     <QtMoc Include="BallancerSlot.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="BallancerStack.h">
+    <QtMoc Include="EditProfileDialog.h">
       <Filter>view\headers</Filter>
     </QtMoc>
   </ItemGroup>
@@ -115,16 +109,13 @@
     <QtUic Include="ScrollableSectionList.ui">
       <Filter>view\ui</Filter>
     </QtUic>
-    <QtUic Include="EditProfileDialog.ui">
-      <Filter>view\ui</Filter>
-    </QtUic>
     <QtUic Include="Ballancer.ui">
       <Filter>view\ui</Filter>
     </QtUic>
     <QtUic Include="BallancerSlot.ui">
       <Filter>view\ui</Filter>
     </QtUic>
-    <QtUic Include="BallancerStack.ui">
+    <QtUic Include="EditProfileDialog.ui">
       <Filter>view\ui</Filter>
     </QtUic>
   </ItemGroup>

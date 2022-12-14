@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>932</width>
+    <width>923</width>
     <height>885</height>
    </rect>
   </property>
@@ -27,7 +27,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="playersTab">
        <attribute name="title">
@@ -125,6 +125,9 @@
    <extends>QWidget</extends>
    <header>ScrollableSectionList.h</header>
    <container>1</container>
+   <slots>
+    <slot>addPlayerButton()</slot>
+   </slots>
   </customwidget>
   <customwidget>
    <class>Ballancer</class>
@@ -134,5 +137,25 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>ActAddUserButton</sender>
+   <signal>clicked()</signal>
+   <receiver>allPlayers</receiver>
+   <slot>addPlayerButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>664</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>407</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>a()</slot>
+ </slots>
 </ui>

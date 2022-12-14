@@ -1,5 +1,6 @@
 #include "ScrollableSectionList.h"
 #include "PlayerNode.h"
+#include "EditProfileDialog.h"
 #include <qlistwidget.h>
 ScrollableSectionList::ScrollableSectionList(QWidget *parent)
 	: QWidget(parent)
@@ -10,10 +11,21 @@ ScrollableSectionList::ScrollableSectionList(QWidget *parent)
 ScrollableSectionList::~ScrollableSectionList()
 {}
 
-void ScrollableSectionList::addPlayer(QString name, QPixmap* logo) {
-	PlayerNode* node = new PlayerNode(name, logo, this);
+void ScrollableSectionList::addPlayerWidget(Player player) {
+	PlayerNode* node = new PlayerNode(player, this);
 	QListWidgetItem* item = new QListWidgetItem();
 	item->setSizeHint(node->sizeHint());
 	ui.listWidget->addItem(item);
 	ui.listWidget->setItemWidget(item, node);
+}
+
+void ScrollableSectionList::addPlayerButton() {
+	playerDialog = new EditProfileDialog();
+	playerDialog->open();
+	connect(playerDialog, &EditProfileDialog::finished, this, &ScrollableSectionList::dialogClosedAddPlayer);
+}
+
+void ScrollableSectionList::dialogClosedAddPlayer() {
+	Player data = playerDialog->getData();
+	addPlayerWidget(data);
 }

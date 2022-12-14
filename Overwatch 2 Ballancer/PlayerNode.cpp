@@ -1,9 +1,9 @@
 #include "PlayerNode.h"
 
-PlayerNode::PlayerNode(QString name, QPixmap* logo, QWidget *parent)
+PlayerNode::PlayerNode(Player player, QWidget *parent)
 	: PlayerNode(parent)
 {
-	setParams(name, logo);
+	setParams(player);
 }
 PlayerNode::PlayerNode(QWidget *parent)
 	: QWidget(parent) {
@@ -19,7 +19,7 @@ void PlayerNode::setName(QString name) {
 void PlayerNode::setLogo(QPixmap* logo) {
 	ui.logo->setPixmap(*logo);
 }
-void PlayerNode::setParams(QString name, QPixmap* logo) {
-	ui.logo->setPixmap(*logo);
-	ui.nick->setText(name);
+void PlayerNode::setParams(Player player) {
+	//ui.logo->setPixmap(*logo);
+	ui.nick->setText(QString(player.identity.name.c_str()));
 }
