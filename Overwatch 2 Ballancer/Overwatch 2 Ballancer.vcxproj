@@ -105,7 +105,6 @@
     <ClInclude Include="Player.h" />
     <QtMoc Include="PlayerNode.h" />
     <ClInclude Include="PlayerLists.h" />
-    <ClInclude Include="Players.h" />
     <ClInclude Include="Role.h" />
     <QtMoc Include="ScrollableSectionList.h" />
     <ClInclude Include="Stats.h" />

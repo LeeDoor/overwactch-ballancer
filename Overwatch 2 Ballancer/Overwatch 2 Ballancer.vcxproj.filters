@@ -57,9 +57,6 @@
     <ClInclude Include="Stats.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="Players.h">
-      <Filter>model\headers</Filter>
-    </ClInclude>
     <ClInclude Include="BallanceSlotData.h">
       <Filter>view\headers</Filter>
     </ClInclude>
