@@ -13,7 +13,10 @@ public:
 	EditProfileDialog(QWidget* parent = nullptr);
 	~EditProfileDialog();
 
-	Player getData();
+	std::shared_ptr<Player> getData();
+
+	void resetData();
+	void setData(std::shared_ptr<Player> player);
 private:
 	Ui::EditProfileDialogClass ui;
 };

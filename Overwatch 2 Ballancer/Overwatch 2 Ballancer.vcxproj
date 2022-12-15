@@ -89,14 +89,10 @@
     <ClCompile Include="BallancerSlot.cpp" />
     <ClCompile Include="BallanceSlotData.cpp" />
     <ClCompile Include="EditProfileDialog.cpp" />
-    <ClCompile Include="Identity.cpp" />
     <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerLists.cpp" />
     <ClCompile Include="PlayerNode.cpp" />
-    <ClCompile Include="Players.cpp" />
-    <ClCompile Include="Role.cpp" />
     <ClCompile Include="ScrollableSectionList.cpp" />
-    <ClCompile Include="Stats.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -108,8 +104,8 @@
     <QtMoc Include="MainWindow.h" />
     <ClInclude Include="Player.h" />
     <QtMoc Include="PlayerNode.h" />
+    <ClInclude Include="PlayerLists.h" />
     <ClInclude Include="Players.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Role.h" />
     <QtMoc Include="ScrollableSectionList.h" />
     <ClInclude Include="Stats.h" />

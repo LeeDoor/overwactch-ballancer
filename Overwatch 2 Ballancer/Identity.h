@@ -1,7 +1,5 @@
 #pragma once
 #include <string>
-
-// описание игрока
 class Identity
 {
 public:

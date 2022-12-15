@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
 #include "Player.h"
+#include <memory>
 
-// набор игроков
 class Players
 {
-	std::vector<Player> players;
+	std::vector<std::shared_ptr<Player>> players;
 };
 

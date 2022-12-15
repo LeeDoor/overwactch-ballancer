@@ -6,12 +6,13 @@ ScrollableSectionList::ScrollableSectionList(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	playerDialog = new EditProfileDialog();
 }
 
 ScrollableSectionList::~ScrollableSectionList()
 {}
 
-void ScrollableSectionList::addPlayerWidget(Player player) {
+void ScrollableSectionList::addPlayerWidget(std::weak_ptr<Player> player) {
 	PlayerNode* node = new PlayerNode(player, this);
 	QListWidgetItem* item = new QListWidgetItem();
 	item->setSizeHint(node->sizeHint());
@@ -20,12 +21,12 @@ void ScrollableSectionList::addPlayerWidget(Player player) {
 }
 
 void ScrollableSectionList::addPlayerButton() {
-	playerDialog = new EditProfileDialog();
-	playerDialog->open();
-	connect(playerDialog, &EditProfileDialog::accepted, this, &ScrollableSectionList::dialogClosedAddPlayer);
+	playerDialog->exec();
+	std::shared_ptr<Player> data = playerDialog->getData();
+	addPlayerWidget(data);
 }
 
-void ScrollableSectionList::dialogClosedAddPlayer() {
-	Player data = playerDialog->getData();
-	addPlayerWidget(data);
+
+void ScrollableSectionList::onPlayerClicked(QListWidgetItem* item) {
+	(dynamic_cast<PlayerNode*>(ui.listWidget->itemWidget(item)))->editParamsButton();
 }

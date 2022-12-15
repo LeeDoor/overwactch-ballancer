@@ -2,7 +2,6 @@
 #include <string>
 #include "Role.h"
 
-// класс с ролями
 class Stats 
 {
 public:

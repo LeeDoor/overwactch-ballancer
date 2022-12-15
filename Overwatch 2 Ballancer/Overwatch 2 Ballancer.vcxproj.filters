@@ -1,21 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Role.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
-    <ClCompile Include="Identity.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
-    <ClCompile Include="Stats.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
-    <ClCompile Include="Players.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp">
       <Filter>view</Filter>
@@ -37,6 +22,9 @@
     </ClCompile>
     <ClCompile Include="ScrollableSectionList.cpp">
       <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerLists.cpp">
+      <Filter>model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,9 +54,6 @@
     <ClInclude Include="Identity.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>model\headers</Filter>
-    </ClInclude>
     <ClInclude Include="Stats.h">
       <Filter>model\headers</Filter>
     </ClInclude>
@@ -77,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="BallanceSlotData.h">
       <Filter>view\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerLists.h">
+      <Filter>model\headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

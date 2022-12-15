@@ -1,9 +1,10 @@
 #include "PlayerNode.h"
 
-PlayerNode::PlayerNode(Player player, QWidget *parent)
+PlayerNode::PlayerNode(std::weak_ptr<Player> player, QWidget *parent)
 	: PlayerNode(parent)
 {
-	setParams(player);
+	_player = player;
+	setParams();
 }
 PlayerNode::PlayerNode(QWidget *parent)
 	: QWidget(parent) {
@@ -19,7 +20,15 @@ void PlayerNode::setName(QString name) {
 void PlayerNode::setLogo(QPixmap* logo) {
 	ui.logo->setPixmap(*logo);
 }
-void PlayerNode::setParams(Player player) {
+void PlayerNode::setParams() {
 	//ui.logo->setPixmap(*logo);
-	ui.nick->setText(QString(player.identity.name.c_str()));
+	ui.nick->setText(QString(_player.lock()->identity.name.c_str()));
+}
+
+void PlayerNode::editParamsButton() {
+	_dialog = std::make_shared<EditProfileDialog>();
+	_dialog->setData(_player.lock());
+	_dialog->exec();
+	_player.lock() = _dialog->getData();
+	setParams();
 }

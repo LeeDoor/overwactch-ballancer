@@ -2,7 +2,6 @@
 #include "Identity.h"
 #include "Stats.h"
 
-// отдельный игрок
 class Player
 {
 public:

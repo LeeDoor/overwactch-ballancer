@@ -28,5 +28,25 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>itemDoubleClicked(QListWidgetItem*)</signal>
+   <receiver>ScrollableSectionListClass</receiver>
+   <slot>onPlayerClicked(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>417</x>
+     <y>251</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>-12</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onPlayerClicked(QListWidgetItem*)</slot>
+ </slots>
 </ui>
