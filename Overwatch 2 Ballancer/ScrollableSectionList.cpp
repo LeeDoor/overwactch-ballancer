@@ -22,7 +22,7 @@ void ScrollableSectionList::addPlayerWidget(Player player) {
 void ScrollableSectionList::addPlayerButton() {
 	playerDialog = new EditProfileDialog();
 	playerDialog->open();
-	connect(playerDialog, &EditProfileDialog::finished, this, &ScrollableSectionList::dialogClosedAddPlayer);
+	connect(playerDialog, &EditProfileDialog::accepted, this, &ScrollableSectionList::dialogClosedAddPlayer);
 }
 
 void ScrollableSectionList::dialogClosedAddPlayer() {

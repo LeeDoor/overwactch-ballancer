@@ -4,6 +4,9 @@ EditProfileDialog::EditProfileDialog(QWidget *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+
+	connect(ui.acceptButton, &QPushButton::clicked, this, &EditProfileDialog::accept);
+	connect(ui.cancelButton, &QPushButton::clicked, this, &EditProfileDialog::reject);
 }
 
 EditProfileDialog::~EditProfileDialog()

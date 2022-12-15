@@ -36,35 +36,23 @@
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <layout class="QGridLayout" name="playersList">
-          <item row="1" column="0">
-           <layout class="QHBoxLayout" name="AllControlLayout">
+          <item row="0" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="PlayersLayout">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
             <item>
-             <widget class="QPushButton" name="ActAddUserButton">
-              <property name="text">
-               <string>добавить</string>
-              </property>
-             </widget>
+             <widget class="ScrollableSectionList" name="allPlayers" native="true"/>
             </item>
             <item>
-             <widget class="QPushButton" name="ActImportJSONButton">
-              <property name="text">
-               <string>импорт JSON</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="ActExportJSONButton">
-              <property name="text">
-               <string>экспорт JSON</string>
-              </property>
-             </widget>
+             <widget class="ScrollableSectionList" name="activePlayers" native="true"/>
             </item>
            </layout>
           </item>
-          <item row="1" column="1">
-           <layout class="QHBoxLayout" name="ActiveControlLayout">
+          <item row="1" column="0">
+           <layout class="QHBoxLayout" name="AllControlLayout">
             <item>
-             <widget class="QPushButton" name="AllAddUserBurron">
+             <widget class="QPushButton" name="AllAddUserButton">
               <property name="text">
                <string>добавить</string>
               </property>
@@ -86,16 +74,28 @@
             </item>
            </layout>
           </item>
-          <item row="0" column="0" colspan="2">
-           <layout class="QHBoxLayout" name="PlayersLayout">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="ActiveControlLayout">
             <item>
-             <widget class="ScrollableSectionList" name="allPlayers" native="true"/>
+             <widget class="QPushButton" name="ActAddUserBurron">
+              <property name="text">
+               <string>добавить</string>
+              </property>
+             </widget>
             </item>
             <item>
-             <widget class="ScrollableSectionList" name="activePlayers" native="true"/>
+             <widget class="QPushButton" name="ActImportJSONButton">
+              <property name="text">
+               <string>импорт JSON</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="ActExportJSONButton">
+              <property name="text">
+               <string>экспорт JSON</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -139,7 +139,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>ActAddUserButton</sender>
+   <sender>AllAddUserButton</sender>
    <signal>clicked()</signal>
    <receiver>allPlayers</receiver>
    <slot>addPlayerButton()</slot>
@@ -151,6 +151,22 @@
     <hint type="destinationlabel">
      <x>195</x>
      <y>407</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ActAddUserBurron</sender>
+   <signal>clicked()</signal>
+   <receiver>activePlayers</receiver>
+   <slot>addPlayerButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>527</x>
+     <y>661</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>592</x>
+     <y>316</y>
     </hint>
    </hints>
   </connection>
