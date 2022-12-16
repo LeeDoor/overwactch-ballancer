@@ -14,11 +14,11 @@ public:
 	PlayerNode(QWidget *parent = nullptr);
 	~PlayerNode();
 
+	std::shared_ptr<Player> player();
+
 	void setName(QString name);
 	void setLogo(QPixmap* logo);
 	void setParams();
-
-	void editParamsButton();
 private:
 	std::shared_ptr<EditProfileDialog> _dialog;
 	std::weak_ptr<Player> _player;

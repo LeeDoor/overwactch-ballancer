@@ -25,10 +25,6 @@ void PlayerNode::setParams() {
 	ui.nick->setText(QString(_player.lock()->identity.name.c_str()));
 }
 
-void PlayerNode::editParamsButton() {
-	_dialog = std::make_shared<EditProfileDialog>();
-	_dialog->setData(_player.lock());
-	_dialog->exec();
-	*_player.lock() = *_dialog->getData();
-	setParams();
+std::shared_ptr<Player> PlayerNode::player() {
+	return _player.lock();
 }

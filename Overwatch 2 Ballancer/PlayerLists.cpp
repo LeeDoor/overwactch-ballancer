@@ -45,7 +45,7 @@ std::shared_ptr<Player> PlayerLists::editPlayer(std::string lastName, std::share
 		return (p->identity.name.compare(lastName) == 0);
 	});
 	if (iter == allPlayers.end())return nullptr;
-	*iter = newPlayer;
+	*(* iter) = *newPlayer;
 	return *iter;
 }
 

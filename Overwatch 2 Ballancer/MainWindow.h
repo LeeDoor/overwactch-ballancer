@@ -11,7 +11,12 @@ public:
 	MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
 
+	void updateLists();
+
 public slots:
+	//edits player stats and updates lists
+	void editPlayerButton(std::shared_ptr<Player> player);
+
 	void addPlayerButton(); // opens dialog to get data about new player,
 	// creates a widget with a player
 	// and adds a player to a list
@@ -19,7 +24,13 @@ public slots:
 	// creates a widget with a player
 	// and adds an active player to a list
 
-
+	//deletes a player selected in main list.
+	//if this player is in active player list,
+	//deletes from there too
+	void deletePlayerButton();
+	//deletes player from active player list. 
+	//DOESNT delete this player from global player list.
+	void deleteActivePlayerButton();
 private:
 	std::shared_ptr<EditProfileDialog> playerDialog;
 	Ui::MainWindowClass ui;

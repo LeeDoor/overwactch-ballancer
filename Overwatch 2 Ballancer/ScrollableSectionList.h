@@ -13,13 +13,19 @@ public:
 	~ScrollableSectionList();
 
 	void addPlayerWidget(std::weak_ptr<Player> player);
+	void updateList(std::vector<std::weak_ptr<Player>> players);
 	void updateList(std::vector<std::shared_ptr<Player>> players);
 	void clearList();
 
+	std::shared_ptr<Player> getSelectedPlayer();
+	std::shared_ptr<Player> getPlayerWithItem(QListWidgetItem* item);
+
 public slots:
-	void onPlayerClicked(QListWidgetItem* index);
-	//void importJSON();
-	//void exportJSON();
+	void onPlayerClickedSlot(QListWidgetItem* item);
+
+signals:
+	void onPlayerClicked(std::shared_ptr<Player> player);
+
 private:
 	Ui::ScrollableSectionListClass ui;
 };

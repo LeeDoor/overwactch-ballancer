@@ -33,20 +33,20 @@
    <sender>listWidget</sender>
    <signal>itemDoubleClicked(QListWidgetItem*)</signal>
    <receiver>ScrollableSectionListClass</receiver>
-   <slot>onPlayerClicked(QListWidgetItem*)</slot>
+   <slot>onPlayerClickedSlot(QListWidgetItem*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>417</x>
-     <y>251</y>
+     <x>531</x>
+     <y>254</y>
     </hint>
     <hint type="destinationlabel">
-     <x>413</x>
-     <y>-12</y>
+     <x>609</x>
+     <y>278</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
-  <slot>onPlayerClicked(QListWidgetItem*)</slot>
+  <slot>onPlayerClickedSlot(QListWidgetItem*)</slot>
  </slots>
 </ui>

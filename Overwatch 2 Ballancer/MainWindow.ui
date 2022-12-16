@@ -72,12 +72,51 @@
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QPushButton" name="AllDeleteButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>удалить</string>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
           </item>
           <item row="1" column="1">
            <layout class="QHBoxLayout" name="ActiveControlLayout">
             <item>
-             <widget class="QPushButton" name="ActAddUserBurron">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="ActAddUserButton">
               <property name="text">
                <string>добавить</string>
               </property>
@@ -94,6 +133,19 @@
              <widget class="QPushButton" name="ActExportJSONButton">
               <property name="text">
                <string>экспорт JSON</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="ActDeleteButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>удалить</string>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -126,6 +178,7 @@
    <header>ScrollableSectionList.h</header>
    <container>1</container>
    <slots>
+    <signal>onPlayerClicked(QListWidgetItem*)</signal>
     <slot>addPlayerButton()</slot>
    </slots>
   </customwidget>
@@ -149,24 +202,56 @@
      <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>2</x>
-     <y>679</y>
+     <x>82</x>
+     <y>873</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>ActAddUserBurron</sender>
+   <sender>ActAddUserButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindowClass</receiver>
    <slot>addActPlayerButton()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>542</x>
-     <y>657</y>
+     <x>641</x>
+     <y>670</y>
     </hint>
     <hint type="destinationlabel">
-     <x>2</x>
-     <y>720</y>
+     <x>641</x>
+     <y>694</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AllDeleteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>deletePlayerButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>311</x>
+     <y>665</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>285</x>
+     <y>878</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ActDeleteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>deleteActivePlayerButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>850</x>
+     <y>667</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>850</x>
+     <y>759</y>
     </hint>
    </hints>
   </connection>
@@ -174,5 +259,8 @@
  <slots>
   <slot>addPlayerButton()</slot>
   <slot>addActPlayerButton()</slot>
+  <slot>deletePlayerButton()</slot>
+  <slot>deleteActivePlayerButton()</slot>
+  <slot>editPlayerButton(QListWidgetItem*)</slot>
  </slots>
 </ui>

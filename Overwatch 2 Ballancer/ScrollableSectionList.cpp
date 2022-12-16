@@ -28,10 +28,33 @@ void ScrollableSectionList::updateList(std::vector<std::shared_ptr<Player>> play
 	}
 }
 
+void ScrollableSectionList::updateList(std::vector<std::weak_ptr<Player>> players) {
+	clearList();
+	for (auto player : players) {
+		addPlayerWidget(player);
+	}
+}
+
 void ScrollableSectionList::clearList() {
 	ui.listWidget->clear();
 }
 
-void ScrollableSectionList::onPlayerClicked(QListWidgetItem* item) {
-	(dynamic_cast<PlayerNode*>(ui.listWidget->itemWidget(item)))->editParamsButton();
+std::shared_ptr<Player> ScrollableSectionList::getSelectedPlayer() {
+	auto items = ui.listWidget->selectedItems();
+	if (items.size() == 0) {
+		return nullptr;
+	}
+	QListWidgetItem* item = items[0];
+	return getPlayerWithItem(item);
 }
+
+std::shared_ptr<Player> ScrollableSectionList::getPlayerWithItem(QListWidgetItem* item) {
+	QWidget* widget1 = ui.listWidget->itemWidget(item);
+	PlayerNode* widget2 = dynamic_cast<PlayerNode*>(widget1);
+	return widget2->player();
+}
+void ScrollableSectionList::onPlayerClickedSlot(QListWidgetItem* item) {
+	std::shared_ptr<Player> player = getPlayerWithItem(item);
+	QMetaObject::invokeMethod(this, "onPlayerClicked", Qt::DirectConnection, Q_ARG(std::shared_ptr<Player>, player));
+}
+//QMetaObject::invokeMethod(task, "doTask", Q_ARG(int, param));
