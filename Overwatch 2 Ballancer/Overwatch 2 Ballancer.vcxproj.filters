@@ -26,6 +26,9 @@
     <ClCompile Include="PlayerLists.cpp">
       <Filter>model</Filter>
     </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="model">

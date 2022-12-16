@@ -13,18 +13,13 @@ public:
 	~ScrollableSectionList();
 
 	void addPlayerWidget(std::weak_ptr<Player> player);
+	void updateList(std::vector<std::shared_ptr<Player>> players);
+	void clearList();
 
 public slots:
-	void addPlayerButton(); // opens dialog to get data 
-							// about new player and connects function 
-							// below to FINISHED signal of the dialog
-	//void dialogClosedAddPlayer(); // when dialog is closed adds player
-								  // to list
-
 	void onPlayerClicked(QListWidgetItem* index);
 	//void importJSON();
 	//void exportJSON();
 private:
 	Ui::ScrollableSectionListClass ui;
-	EditProfileDialog* playerDialog;
 };

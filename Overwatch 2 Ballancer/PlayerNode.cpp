@@ -29,6 +29,6 @@ void PlayerNode::editParamsButton() {
 	_dialog = std::make_shared<EditProfileDialog>();
 	_dialog->setData(_player.lock());
 	_dialog->exec();
-	_player.lock() = _dialog->getData();
+	*_player.lock() = *_dialog->getData();
 	setParams();
 }

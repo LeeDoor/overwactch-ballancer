@@ -141,37 +141,38 @@
   <connection>
    <sender>AllAddUserButton</sender>
    <signal>clicked()</signal>
-   <receiver>allPlayers</receiver>
+   <receiver>MainWindowClass</receiver>
    <slot>addPlayerButton()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>106</x>
-     <y>664</y>
+     <x>87</x>
+     <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>195</x>
-     <y>407</y>
+     <x>2</x>
+     <y>679</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>ActAddUserBurron</sender>
    <signal>clicked()</signal>
-   <receiver>activePlayers</receiver>
-   <slot>addPlayerButton()</slot>
+   <receiver>MainWindowClass</receiver>
+   <slot>addActPlayerButton()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>661</y>
+     <x>542</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>592</x>
-     <y>316</y>
+     <x>2</x>
+     <y>720</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
-  <slot>a()</slot>
+  <slot>addPlayerButton()</slot>
+  <slot>addActPlayerButton()</slot>
  </slots>
 </ui>

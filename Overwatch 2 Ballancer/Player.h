@@ -9,5 +9,8 @@ public:
 	Stats stats;
 
 	std::string createdAt;
+
+	bool operator == (Player player);
+	bool operator == (std::string name);
 };
 

@@ -5,15 +5,19 @@
 
 class PlayerLists
 {
-private:
+public:
 	static std::vector<std::shared_ptr<Player>> allPlayers;
 	static std::vector<std::weak_ptr<Player>> actPlayers;
 
-public:
-	//add player to given list. return true if player added
+	//add player to list. return true if player added
 	//return false if player already exists
 	static bool addPlayer(std::shared_ptr<Player> player);
-	static bool addActivePlayer(std::shared_ptr<Player> player);
+
+	//adds a player to active players list. 
+	//if player already exists in thie list, reutrns 2.
+	//if player exists in global list, adds and returns 1
+	//if player does not exist anywhere, adds to both lists and returns 0
+	static int addActivePlayer(std::shared_ptr<Player> player);
 
 	//returns true if there is a given player in given list
 	static std::shared_ptr<Player> hasPlayer(std::shared_ptr<Player> player);
