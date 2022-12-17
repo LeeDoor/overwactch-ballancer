@@ -94,7 +94,7 @@
     <ClCompile Include="PlayerNode.cpp" />
     <ClCompile Include="ScrollableSectionList.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Ballancer.h" />

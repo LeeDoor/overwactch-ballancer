@@ -10,18 +10,13 @@ public:
 	static std::vector<std::weak_ptr<Player>> actPlayers;
 
 	//add player to list. return true if player added
-	//return false if player already exists
+	//if successfully added, returns true, false overwise
 	static bool addPlayer(std::shared_ptr<Player> player);
-
-	//adds a player to active players list. 
-	//if player already exists in thie list, reutrns 2.
-	//if player exists in global list, adds and returns 1
-	//if player does not exist anywhere, adds to both lists and returns 0
-	static int addActivePlayer(std::shared_ptr<Player> player);
+	static bool addActivePlayer(std::shared_ptr<Player> player);
 
 	//returns true if there is a given player in given list
-	static std::shared_ptr<Player> hasPlayer(std::shared_ptr<Player> player);
-	static std::shared_ptr<Player> hasActivePlayer(std::shared_ptr<Player> player);
+	static bool hasPlayer(std::shared_ptr<Player> player);
+	static bool hasActivePlayer(std::shared_ptr<Player> player);
 
 	//edits player with given name to given stats
 	//returns true if success, returns true if player not found
@@ -37,5 +32,10 @@ public:
 	//returns true if player found and removed, false overwise
 	static bool removeActPlayer(std::shared_ptr<Player> player);
 
+private:
+	static std::vector<std::shared_ptr<Player>>::iterator allFindIter(std::shared_ptr<Player> p);
+	static std::vector<std::shared_ptr<Player>>::iterator allFindIter(std::string name);
+	static std::vector<std::weak_ptr<Player>>::iterator actFindIter(std::shared_ptr<Player> p);
+	static std::vector<std::weak_ptr<Player>>::iterator actFindIter(std::string name);
 };
 

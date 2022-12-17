@@ -179,6 +179,7 @@
    <container>1</container>
    <slots>
     <signal>onPlayerClicked(QListWidgetItem*)</signal>
+    <signal>onPlayerSelected(bool)</signal>
     <slot>addPlayerButton()</slot>
    </slots>
   </customwidget>
@@ -255,6 +256,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>allPlayers</sender>
+   <signal>onPlayerSelected(bool)</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>allPlDelButAct(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>266</x>
+     <y>306</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>264</x>
+     <y>-16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>activePlayers</sender>
+   <signal>onPlayerSelected(bool)</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>actPlDelButAct(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>660</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>657</x>
+     <y>-18</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addPlayerButton()</slot>
@@ -262,5 +295,7 @@
   <slot>deletePlayerButton()</slot>
   <slot>deleteActivePlayerButton()</slot>
   <slot>editPlayerButton(QListWidgetItem*)</slot>
+  <slot>allPlDelButAct(bool)</slot>
+  <slot>actPlDelButAct(bool)</slot>
  </slots>
 </ui>

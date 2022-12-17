@@ -31,6 +31,11 @@ public slots:
 	//deletes player from active player list. 
 	//DOESNT delete this player from global player list.
 	void deleteActivePlayerButton();
+
+	//sets delete button for all players activate or not
+	void allPlDelButAct(bool isAct);
+	//sets delete button for active players activate or not
+	void actPlDelButAct(bool isAct);
 private:
 	std::shared_ptr<EditProfileDialog> playerDialog;
 	Ui::MainWindowClass ui;

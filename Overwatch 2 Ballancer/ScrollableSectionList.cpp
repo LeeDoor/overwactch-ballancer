@@ -53,8 +53,14 @@ std::shared_ptr<Player> ScrollableSectionList::getPlayerWithItem(QListWidgetItem
 	PlayerNode* widget2 = dynamic_cast<PlayerNode*>(widget1);
 	return widget2->player();
 }
+
 void ScrollableSectionList::onPlayerClickedSlot(QListWidgetItem* item) {
 	std::shared_ptr<Player> player = getPlayerWithItem(item);
 	QMetaObject::invokeMethod(this, "onPlayerClicked", Qt::DirectConnection, Q_ARG(std::shared_ptr<Player>, player));
 }
 //QMetaObject::invokeMethod(task, "doTask", Q_ARG(int, param));
+
+void ScrollableSectionList::isPlayerSelectedSlot() {
+	QList<QListWidgetItem*> selects = ui.listWidget->selectedItems();
+	QMetaObject::invokeMethod(this, "onPlayerSelected", Qt::DirectConnection, Q_ARG(bool, selects.size() != 0));
+}

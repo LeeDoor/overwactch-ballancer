@@ -31,16 +31,16 @@ void MainWindow::addPlayerButton() {
 	playerDialog->resetData();
 	playerDialog->exec();
 	std::shared_ptr<Player> data = playerDialog->getData();
-	if (PlayerLists::addPlayer(data))
-		ui.allPlayers->addPlayerWidget(data);
+	PlayerLists::addPlayer(data);
+	updateLists();
 }
 
 void MainWindow::addActPlayerButton() {
 	playerDialog->resetData();
 	playerDialog->exec();
 	std::shared_ptr<Player> data = playerDialog->getData();
-	if (PlayerLists::addActivePlayer(data) != 2)
-		updateLists();
+	PlayerLists::addActivePlayer(data);
+	updateLists();
 }
 
 void MainWindow::deletePlayerButton() {
@@ -54,4 +54,11 @@ void MainWindow::deleteActivePlayerButton() {
 	if (!player) return;
 	PlayerLists::removeActPlayer(player);
 	updateLists();
+}
+
+void MainWindow::allPlDelButAct(bool isAct) {
+	ui.AllDeleteButton->setEnabled(isAct);
+}
+void MainWindow::actPlDelButAct(bool isAct) {
+	ui.ActDeleteButton->setEnabled(isAct);
 }

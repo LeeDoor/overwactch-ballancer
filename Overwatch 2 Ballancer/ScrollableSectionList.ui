@@ -45,8 +45,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>ScrollableSectionListClass</receiver>
+   <slot>isPlayerSelectedSlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>460</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>606</x>
+     <y>150</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onPlayerClickedSlot(QListWidgetItem*)</slot>
+  <slot>isPlayerSelectedSlot()</slot>
  </slots>
 </ui>
