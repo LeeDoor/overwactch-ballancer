@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-class Identity
+struct Identity
 {
 public:
 	std::string name;

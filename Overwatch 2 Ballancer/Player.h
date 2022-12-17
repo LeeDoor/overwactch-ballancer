@@ -2,12 +2,11 @@
 #include "Identity.h"
 #include "Stats.h"
 
-class Player
+struct Player
 {
 public:
 	Identity identity;
 	Stats stats;
-
 	std::string createdAt;
 
 	bool operator == (Player player);

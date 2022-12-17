@@ -29,6 +29,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>model</Filter>
     </ClCompile>
+    <ClCompile Include="JSONParser.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="model">
@@ -57,13 +60,22 @@
     <ClInclude Include="Identity.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="Stats.h">
+    <ClInclude Include="Classes.h">
       <Filter>model\headers</Filter>
     </ClInclude>
     <ClInclude Include="BallanceSlotData.h">
       <Filter>view\headers</Filter>
     </ClInclude>
     <ClInclude Include="PlayerLists.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="JSONParser.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="JSON.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Stats.h">
       <Filter>model\headers</Filter>
     </ClInclude>
   </ItemGroup>

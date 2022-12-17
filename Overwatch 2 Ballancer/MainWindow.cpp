@@ -1,7 +1,9 @@
 #include "MainWindow.h"
 #include <qrandom.h>
+#include <QMessageBox>
 #include "PlayerLists.h"
 #include "PlayerNode.h"
+#include "JSONParser.h"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -10,6 +12,19 @@ MainWindow::MainWindow(QWidget *parent)
 	playerDialog = std::make_shared<EditProfileDialog>();
 	connect(ui.allPlayers, &ScrollableSectionList::onPlayerClicked, this, &MainWindow::editPlayerButton);
 	connect(ui.activePlayers, &ScrollableSectionList::onPlayerClicked, this, &MainWindow::editPlayerButton);
+
+	JSONParser p;
+	JSON j = p.deserializePlayer("database.json");
+
+	QMessageBox a;
+	a.show();
+
+	auto map = j.players;
+	std::vector<std::shared_ptr<Player>> ordinals;
+	std::transform(map.begin(), map.end(), std::back_inserter(ordinals),
+		[](std::pair<const std::string, Player> p) { return std::make_shared<Player>(p.second); });
+	PlayerLists::allPlayers = ordinals;
+	updateLists();
 }
 
 MainWindow::~MainWindow()
@@ -23,24 +38,34 @@ void MainWindow::updateLists() {
 void MainWindow::editPlayerButton(std::shared_ptr<Player> player) {
 	playerDialog->setData(player);
 	playerDialog->exec();
-	PlayerLists::editPlayer(player->identity.name, playerDialog->getData());
-	updateLists();
+	if (playerDialog->result() == QDialog::Accepted) {
+		auto data = playerDialog->getData();
+		if (*data == *player)return;
+		PlayerLists::editPlayer(player->identity.name, playerDialog->getData());
+		updateLists();
+	}
 }
 
 void MainWindow::addPlayerButton() {
 	playerDialog->resetData();
 	playerDialog->exec();
 	std::shared_ptr<Player> data = playerDialog->getData();
-	PlayerLists::addPlayer(data);
-	updateLists();
+	if (playerDialog->result() == QDialog::Accepted) {
+		auto data = playerDialog->getData();
+		PlayerLists::addPlayer(data);
+		updateLists();
+	}
 }
 
 void MainWindow::addActPlayerButton() {
 	playerDialog->resetData();
 	playerDialog->exec();
 	std::shared_ptr<Player> data = playerDialog->getData();
-	PlayerLists::addActivePlayer(data);
-	updateLists();
+	if (playerDialog->result() == QDialog::Accepted) {
+		auto data = playerDialog->getData();
+		PlayerLists::addActivePlayer(data);
+		updateLists();
+	}
 }
 
 void MainWindow::deletePlayerButton() {

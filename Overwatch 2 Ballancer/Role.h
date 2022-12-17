@@ -1,11 +1,12 @@
 #pragma once
-class Role
+struct Role
 {
 public:
 	int rank;
-	int playhours; 
+	int playHours; 
+	int priority;
+	bool primary;
 	bool isActive; 
-	bool primary; 
 	bool secondary; 
 };
 

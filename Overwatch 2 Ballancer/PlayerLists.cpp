@@ -30,7 +30,7 @@ bool PlayerLists::hasPlayer(std::shared_ptr<Player> player) {
 	return true;
 }
 bool PlayerLists::hasActivePlayer(std::shared_ptr<Player> player) {
-	std::vector<std::weak_ptr<Player>>::iterator iter = actFindIter(player);
+	auto iter = actFindIter(player);
 	if (iter == actPlayers.end()) return false;
 	return true;
 }

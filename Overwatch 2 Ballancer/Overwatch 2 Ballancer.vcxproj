@@ -58,6 +58,16 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Projects\C++\Overwatch 2 Ballancer\Overwatch 2 Ballancer\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Projects\C++\Overwatch 2 Ballancer\Overwatch 2 Ballancer\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -89,6 +99,7 @@
     <ClCompile Include="BallancerSlot.cpp" />
     <ClCompile Include="BallanceSlotData.cpp" />
     <ClCompile Include="EditProfileDialog.cpp" />
+    <ClCompile Include="JSONParser.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="PlayerLists.cpp" />
     <ClCompile Include="PlayerNode.cpp" />
@@ -101,14 +112,17 @@
     <QtMoc Include="BallancerSlot.h" />
     <ClInclude Include="BallanceSlotData.h" />
     <QtMoc Include="EditProfileDialog.h" />
+    <ClInclude Include="Stats.h" />
     <ClInclude Include="Identity.h" />
     <QtMoc Include="MainWindow.h" />
+    <ClInclude Include="JSONParser.h" />
     <ClInclude Include="Player.h" />
     <QtMoc Include="PlayerNode.h" />
     <ClInclude Include="PlayerLists.h" />
+    <ClInclude Include="JSON.h" />
     <ClInclude Include="Role.h" />
     <QtMoc Include="ScrollableSectionList.h" />
-    <ClInclude Include="Stats.h" />
+    <ClInclude Include="Classes.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Ballancer.ui" />
