@@ -7,7 +7,7 @@ private:
 	std::string readFile(std::string path);
 
 public:
-	JSON deserializePlayer(std::string pathFile);
+	std::unique_ptr<JSON> deserializePlayer(std::string pathFile);
 	//void serializePlayer(Player player, std::string pathFile);
 };
 

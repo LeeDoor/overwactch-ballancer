@@ -14,7 +14,7 @@ public:
 	~ScrollableSectionList();
 
 	//adds a widget with this player
-	std::weak_ptr<QListWidgetItem> addPlayerWidget(std::weak_ptr<Player> player);
+	std::shared_ptr<QListWidgetItem> addPlayerWidget(std::weak_ptr<Player> player);
 	//updates current item from list
 	void updatePlayerWidget(QListWidgetItem* item);
 	//deletes current item from list

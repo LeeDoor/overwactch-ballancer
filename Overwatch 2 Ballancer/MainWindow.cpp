@@ -4,7 +4,6 @@
 #include <QFileDialog>
 #include "PlayerLists.h"
 #include "PlayerNode.h"
-#include "JSONParser.h"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -25,19 +24,79 @@ void MainWindow::updateLists() {
 
 void MainWindow::updateNodesWithPlayer(std::string name) {
 	auto pair = playersNodes[name];
-	ui.allPlayers->updatePlayerWidget(pair.first.lock().get());
-	if (pair.second.lock()) {
-		ui.activePlayers->updatePlayerWidget(pair.second.lock().get());
+	ui.allPlayers->updatePlayerWidget(pair.first.get());
+	if (pair.second) {
+		ui.activePlayers->updatePlayerWidget(pair.second.get());
 	}
 }														 
 
 void MainWindow::deleteNodesWithPlayer(std::string name) {
 	auto pair = playersNodes[name];
-	ui.allPlayers->deletePlayerWidget(pair.first.lock().get());
-	if (pair.second.lock()) {
-		ui.activePlayers->deletePlayerWidget(pair.second.lock().get());
+	ui.allPlayers->deletePlayerWidget(pair.first.get());
+	if (pair.second) {
+		ui.activePlayers->deletePlayerWidget(pair.second.get());
 	}
 }
+
+void MainWindow::addPlayer(std::shared_ptr<Player> player) {
+	if (!PlayerLists::addPlayer(player))return; // if player not added(existing), leaving func
+	std::pair<
+		std::shared_ptr<QListWidgetItem>,
+		std::shared_ptr<QListWidgetItem>
+	> pair;
+	pair.first = ui.allPlayers->addPlayerWidget(player);
+
+	playersNodes[player->identity.uuid] = pair;
+}
+
+void MainWindow::addActivePlayer(std::shared_ptr<Player> player) {
+	PlayerLists::addActivePlayer(player);
+
+	auto el = playersNodes.find(player->identity.uuid);
+	if (el != playersNodes.end()) {
+		el->second.second = ui.activePlayers->addPlayerWidget(player);
+		return;
+	}
+	std::pair<
+		std::shared_ptr<QListWidgetItem>,
+		std::shared_ptr<QListWidgetItem>
+	> pair;
+	pair.first = ui.allPlayers->addPlayerWidget(player);
+	pair.second = ui.activePlayers->addPlayerWidget(player);
+	playersNodes[player->identity.uuid] = pair;
+}
+void MainWindow::editPlayer(std::string uuid, std::shared_ptr<Player> player) {
+	PlayerLists::editPlayer(uuid, player);
+	///////////////
+	auto pair = playersNodes[uuid];
+	auto node1 = ui.allPlayers->getPlayerNodeWithItem(pair.first.get());
+	auto node2 = ui.activePlayers->getPlayerNodeWithItem(pair.second.get());
+	node1->setParams();
+	node2->setParams();
+}
+
+void MainWindow::deletePlayer(std::shared_ptr<Player> player) {
+	auto pair = playersNodes[player->identity.uuid];
+	ui.activePlayers->deletePlayerWidget(pair.second.get());
+	ui.allPlayers->deletePlayerWidget(pair.first.get());
+	playersNodes.erase(player->identity.uuid);
+	PlayerLists::removePlayer(player);
+}
+
+void MainWindow::deleteActivePlayer(std::shared_ptr<Player> player) {
+	auto iter = playersNodes[player->identity.uuid];
+	ui.activePlayers->deletePlayerWidget(iter.second.get());
+	PlayerLists::removeActPlayer(player);
+}
+
+
+
+
+/// <summary>///////////////////////////
+/// SLOTS
+/// </summary>//////////////////////////
+
+
 
 void MainWindow::editPlayerButton(std::shared_ptr<Player> player) {
 	playerDialog->setData(player);
@@ -45,8 +104,7 @@ void MainWindow::editPlayerButton(std::shared_ptr<Player> player) {
 	if (playerDialog->result() == QDialog::Accepted) {
 		auto data = playerDialog->getData();
 		if (*data == *player)return;
-		PlayerLists::editPlayer(player->identity.name, playerDialog->getData());
-		updateLists();
+		editPlayer(player->identity.uuid, playerDialog->getData());
 	}
 }
 
@@ -56,14 +114,7 @@ void MainWindow::addPlayerButton() {
 	std::shared_ptr<Player> data = playerDialog->getData();
 	if (playerDialog->result() == QDialog::Accepted) {
 		auto data = playerDialog->getData();
-		if (!PlayerLists::addPlayer(data))return; // if player not added(existing), leaving func
-		std::pair<
-			std::weak_ptr<QListWidgetItem>,
-			std::weak_ptr<QListWidgetItem>
-		> pair;
-		pair.first = ui.allPlayers->addPlayerWidget(data);
-
-		playersNodes[data->identity.name] = pair;
+		addPlayer(data);
 	}
 }
 
@@ -73,34 +124,18 @@ void MainWindow::addActPlayerButton() {
 	std::shared_ptr<Player> data = playerDialog->getData();
 	if (playerDialog->result() == QDialog::Accepted) {
 		auto data = playerDialog->getData();
-		PlayerLists::addActivePlayer(data);
-
-		auto el = playersNodes.find(data->identity.name);
-		if (el != playersNodes.end()) {
-			el->second.second = ui.activePlayers->addPlayerWidget(data);
-			return;
-		}
-		std::pair<
-			std::weak_ptr<QListWidgetItem>,
-			std::weak_ptr<QListWidgetItem>
-		> pair;
-		pair.first = ui.allPlayers->addPlayerWidget(data);
-		pair.second = ui.activePlayers->addPlayerWidget(data);
-		playersNodes[data->identity.name] = pair;
+		addActivePlayer(data);
 	}
 }
 
 void MainWindow::deletePlayerButton() {
 	auto player = ui.allPlayers->getSelectedPlayer();
-	PlayerLists::removePlayer(player);
-	updateLists();
+	deletePlayer(player);
 }
 
 void MainWindow::deleteActivePlayerButton() {
 	auto player = ui.activePlayers->getSelectedPlayer();
-	if (!player) return;
-	PlayerLists::removeActPlayer(player);
-	updateLists();
+	deleteActivePlayer(player);
 }
 
 void MainWindow::allPlDelButAct(bool isAct) {
@@ -113,27 +148,28 @@ void MainWindow::actPlDelButAct(bool isAct) {
 void MainWindow::importAllJsonButton() {
 	QString dir = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("JSON (*.json)"));
 	if (dir.isNull()) return;
-	try {
-		PlayerLists::updateAllWithJson(dir.toStdString());
-		updateLists();
-	}
-	catch (...) {
-		QMessageBox b;
-		b.critical(this, "ERROR", "error occured while parsing file. maybe it is not a json file or it's structure is wrong?");
-		b.show();
+	JSONParser json;
+	std::unique_ptr<JSON> list = json.deserializePlayer(dir.toStdString());
+	auto mass = listFromJSON(std::move(list));
+	for (auto p : mass) {
+		addPlayer(p);
 	}
 }
 
 void MainWindow::importActJsonButton() {
 	QString dir = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("JSON (*.json)"));
 	if (dir.isNull()) return;
-	try {
-		PlayerLists::updateActWithJson(dir.toStdString());
-		updateLists();
+	JSONParser json;
+	std::unique_ptr<JSON> list = json.deserializePlayer(dir.toStdString());
+	auto mass = listFromJSON(std::move(list));
+	for (auto p : mass) {
+		addActivePlayer(p);
 	}
-	catch (...) {
-		QMessageBox b;
-		b.critical(this, "ERROR", "error occured while parsing file. maybe it is not a json file or it's structure is wrong?");
-		b.show();
-	}
+}
+
+std::vector<std::shared_ptr<Player>> MainWindow::listFromJSON(std::unique_ptr<JSON> json) {
+	std::vector<std::shared_ptr<Player>> players;
+	std::transform(json->players.begin(), json->players.end(), std::back_inserter(players),
+		[](std::pair<const std::string, Player> p) { return std::make_shared<Player>(p.second); });
+	return players;
 }

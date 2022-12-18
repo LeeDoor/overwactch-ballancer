@@ -13,13 +13,13 @@ ScrollableSectionList::ScrollableSectionList(QWidget *parent)
 ScrollableSectionList::~ScrollableSectionList()
 {}
 
-std::weak_ptr<QListWidgetItem> ScrollableSectionList::addPlayerWidget(std::weak_ptr<Player> player) {
+std::shared_ptr<QListWidgetItem> ScrollableSectionList::addPlayerWidget(std::weak_ptr<Player> player) {
 	PlayerNode* node = new PlayerNode(player, this);
-	QListWidgetItem* item = new QListWidgetItem();
+	std::shared_ptr<QListWidgetItem> item = std::make_shared<QListWidgetItem>();
 	item->setSizeHint(node->sizeHint());
-	ui.listWidget->addItem(item);
-	ui.listWidget->setItemWidget(item, node);
-	return std::make_shared<QListWidgetItem>(*item);
+	ui.listWidget->addItem(item.get());
+	ui.listWidget->setItemWidget(item.get(), node);
+	return item;
 }
 
 void ScrollableSectionList::updatePlayerWidget(QListWidgetItem* item) {

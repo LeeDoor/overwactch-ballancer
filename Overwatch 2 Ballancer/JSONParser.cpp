@@ -1,6 +1,7 @@
 #include "JSONParser.h"
 #include <fstream>
 #include <string>
+#include <QMessageBox>
 
 std::string JSONParser::readFile(std::string path) {
 	std::ifstream reader;
@@ -51,9 +52,16 @@ void from_json(const nlohmann::json& j, Role& r) {
 	j.at("secondary").get_to(r.secondary);
 }
 
-JSON JSONParser::deserializePlayer(std::string pathFile) {
-	nlohmann::json json = nlohmann::json::parse(readFile(pathFile));
-	JSON j = json.get<JSON>();
-	return j;
+std::unique_ptr<JSON> JSONParser::deserializePlayer(std::string pathFile) {
+	try{
+		nlohmann::json json = nlohmann::json::parse(readFile(pathFile));
+		std::unique_ptr<JSON> j = std::make_unique<JSON>(json.get<JSON>());
+		return j;
+	}
+	catch (...) {
+		QMessageBox b;
+		b.critical(0, "ERROR", "error occured while parsing file. maybe it is not a json file or it's structure is wrong?");
+		b.show();
+	}
 }
 

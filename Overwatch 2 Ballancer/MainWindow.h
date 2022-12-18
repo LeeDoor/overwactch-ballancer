@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_MainWindow.h"
+#include "JSONParser.h"
 
 class MainWindow : public QMainWindow
 {
@@ -17,6 +18,12 @@ public:
 	void updateNodesWithPlayer(std::string name);
 	//deletes node on screen according to player's name
 	void deleteNodesWithPlayer(std::string name);
+
+	void addPlayer(std::shared_ptr<Player> player);
+	void addActivePlayer(std::shared_ptr<Player> player);
+	void editPlayer(std::string lastName, std::shared_ptr<Player> player);
+	void deletePlayer(std::shared_ptr<Player> player);
+	void deleteActivePlayer(std::shared_ptr<Player> player);
 
 public slots:
 	//edits player stats and updates lists
@@ -59,7 +66,9 @@ private:
 	std::unordered_map
 		<std::string,
 		std::pair<
-		std::weak_ptr<QListWidgetItem>,
-		std::weak_ptr<QListWidgetItem>
+		std::shared_ptr<QListWidgetItem>,
+		std::shared_ptr<QListWidgetItem>
 		>> playersNodes;
+
+	std::vector<std::shared_ptr<Player>> listFromJSON(std::unique_ptr<JSON> json);
 };

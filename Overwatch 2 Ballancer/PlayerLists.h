@@ -32,8 +32,8 @@ public:
 	//returns true if player found and removed, false overwise
 	static bool removeActPlayer(std::shared_ptr<Player> player);
 
-	static void updateAllWithJson(std::string path);
-	static void updateActWithJson(std::string path);
+	//static void updateAllWithJson(std::string path);
+	//static void updateActWithJson(std::string path);
 private:
 	static std::vector<std::shared_ptr<Player>>::iterator allFindIter(std::shared_ptr<Player> p);
 	static std::vector<std::shared_ptr<Player>>::iterator allFindIter(std::string name);
