@@ -288,6 +288,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>AllImportJSONButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>importAllJsonButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>128</x>
+     <y>657</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>122</x>
+     <y>880</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ActImportJSONButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>importActJsonButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>710</x>
+     <y>667</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>656</x>
+     <y>884</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addPlayerButton()</slot>
@@ -297,5 +329,7 @@
   <slot>editPlayerButton(QListWidgetItem*)</slot>
   <slot>allPlDelButAct(bool)</slot>
   <slot>actPlDelButAct(bool)</slot>
+  <slot>importAllJsonButton()</slot>
+  <slot>importActJsonButton()</slot>
  </slots>
 </ui>

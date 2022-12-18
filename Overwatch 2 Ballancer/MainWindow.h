@@ -36,6 +36,11 @@ public slots:
 	void allPlDelButAct(bool isAct);
 	//sets delete button for active players activate or not
 	void actPlDelButAct(bool isAct);
+
+	//asks user a path file and acts
+	void importAllJsonButton();
+	void importActJsonButton();
+	//void exportJsonButton();
 private:
 	std::shared_ptr<EditProfileDialog> playerDialog;
 	Ui::MainWindowClass ui;

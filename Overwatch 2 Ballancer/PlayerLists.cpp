@@ -1,4 +1,5 @@
 #include "PlayerLists.h"
+#include "JSONParser.h"
 #include <algorithm>
 
 std::vector<std::shared_ptr<Player>> PlayerLists::allPlayers;
@@ -76,4 +77,28 @@ std::vector<std::weak_ptr<Player>>::iterator PlayerLists::actFindIter(std::strin
 		[&](std::weak_ptr<Player> p) { 
 			return p.lock()->identity.name.compare(name) == 0;
 		});
+}
+
+void PlayerLists::updateAllWithJson(std::string path) {
+	JSONParser p;
+	JSON list = p.deserializePlayer(path);
+	std::vector<std::shared_ptr<Player>> players;
+	std::transform(list.players.begin(), list.players.end(), std::back_inserter(players),
+		[](std::pair<const std::string, Player> p) { return std::make_shared<Player>(p.second); });
+
+	for (auto iter : players) {
+		addPlayer(iter);
+	}
+}
+
+void PlayerLists::updateActWithJson(std::string path) {
+	JSONParser p;
+	JSON list = p.deserializePlayer(path);
+	std::vector<std::shared_ptr<Player>> players;
+	std::transform(list.players.begin(), list.players.end(), std::back_inserter(players),
+		[](std::pair<const std::string, Player> p) { return std::make_shared<Player>(p.second); });
+	
+	for (auto iter : players) {
+		addActivePlayer(iter);
+	}
 }

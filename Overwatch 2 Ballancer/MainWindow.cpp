@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include <qrandom.h>
 #include <QMessageBox>
+#include <QFileDialog>
 #include "PlayerLists.h"
 #include "PlayerNode.h"
 #include "JSONParser.h"
@@ -12,19 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
 	playerDialog = std::make_shared<EditProfileDialog>();
 	connect(ui.allPlayers, &ScrollableSectionList::onPlayerClicked, this, &MainWindow::editPlayerButton);
 	connect(ui.activePlayers, &ScrollableSectionList::onPlayerClicked, this, &MainWindow::editPlayerButton);
-
-	JSONParser p;
-	JSON j = p.deserializePlayer("database.json");
-
-	QMessageBox a;
-	a.show();
-
-	auto map = j.players;
-	std::vector<std::shared_ptr<Player>> ordinals;
-	std::transform(map.begin(), map.end(), std::back_inserter(ordinals),
-		[](std::pair<const std::string, Player> p) { return std::make_shared<Player>(p.second); });
-	PlayerLists::allPlayers = ordinals;
-	updateLists();
 }
 
 MainWindow::~MainWindow()
@@ -86,4 +74,32 @@ void MainWindow::allPlDelButAct(bool isAct) {
 }
 void MainWindow::actPlDelButAct(bool isAct) {
 	ui.ActDeleteButton->setEnabled(isAct);
+}
+
+void MainWindow::importAllJsonButton() {
+	QString dir = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("JSON (*.json)"));
+	if (dir.isNull()) return;
+	try {
+		PlayerLists::updateAllWithJson(dir.toStdString());
+		updateLists();
+	}
+	catch (...) {
+		QMessageBox b;
+		b.critical(this, "ERROR", "error occured while parsing file. maybe it is not a json file or it's structure is wrong?");
+		b.show();
+	}
+}
+
+void MainWindow::importActJsonButton() {
+	QString dir = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("JSON (*.json)"));
+	if (dir.isNull()) return;
+	try {
+		PlayerLists::updateActWithJson(dir.toStdString());
+		updateLists();
+	}
+	catch (...) {
+		QMessageBox b;
+		b.critical(this, "ERROR", "error occured while parsing file. maybe it is not a json file or it's structure is wrong?");
+		b.show();
+	}
 }
