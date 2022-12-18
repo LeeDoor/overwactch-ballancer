@@ -13,6 +13,11 @@ public:
 
 	void updateLists();
 
+	//updates node on screen according to player's name
+	void updateNodesWithPlayer(std::string name);
+	//deletes node on screen according to player's name
+	void deleteNodesWithPlayer(std::string name);
+
 public slots:
 	//edits player stats and updates lists
 	void editPlayerButton(std::shared_ptr<Player> player);
@@ -44,4 +49,17 @@ public slots:
 private:
 	std::shared_ptr<EditProfileDialog> playerDialog;
 	Ui::MainWindowClass ui;
+
+	//map. needed to faster update nodes on screen
+	//without updating every single node in list.
+	//player's name is a key to faster finding. 
+	//value is a pair of nodes. first element is global
+	//element, it always is. second element is active player
+	//list. it is not always there.
+	std::unordered_map
+		<std::string,
+		std::pair<
+		std::weak_ptr<QListWidgetItem>,
+		std::weak_ptr<QListWidgetItem>
+		>> playersNodes;
 };

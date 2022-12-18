@@ -13,12 +13,21 @@ ScrollableSectionList::ScrollableSectionList(QWidget *parent)
 ScrollableSectionList::~ScrollableSectionList()
 {}
 
-void ScrollableSectionList::addPlayerWidget(std::weak_ptr<Player> player) {
+std::weak_ptr<QListWidgetItem> ScrollableSectionList::addPlayerWidget(std::weak_ptr<Player> player) {
 	PlayerNode* node = new PlayerNode(player, this);
 	QListWidgetItem* item = new QListWidgetItem();
 	item->setSizeHint(node->sizeHint());
 	ui.listWidget->addItem(item);
 	ui.listWidget->setItemWidget(item, node);
+	return std::make_shared<QListWidgetItem>(*item);
+}
+
+void ScrollableSectionList::updatePlayerWidget(QListWidgetItem* item) {
+	getPlayerNodeWithItem(item)->setParams();
+}
+
+void ScrollableSectionList::deletePlayerWidget(QListWidgetItem* item) {
+	ui.listWidget->removeItemWidget(item);
 }
 
 void ScrollableSectionList::updateList(std::vector<std::shared_ptr<Player>> players) {
@@ -45,17 +54,17 @@ std::shared_ptr<Player> ScrollableSectionList::getSelectedPlayer() {
 		return nullptr;
 	}
 	QListWidgetItem* item = items[0];
-	return getPlayerWithItem(item);
+	return getPlayerNodeWithItem(item)->player();
 }
 
-std::shared_ptr<Player> ScrollableSectionList::getPlayerWithItem(QListWidgetItem* item) {
+PlayerNode* ScrollableSectionList::getPlayerNodeWithItem(QListWidgetItem* item) {
 	QWidget* widget1 = ui.listWidget->itemWidget(item);
 	PlayerNode* widget2 = dynamic_cast<PlayerNode*>(widget1);
-	return widget2->player();
+	return widget2;
 }
 
 void ScrollableSectionList::onPlayerClickedSlot(QListWidgetItem* item) {
-	std::shared_ptr<Player> player = getPlayerWithItem(item);
+	std::shared_ptr<Player> player = getPlayerNodeWithItem(item)->player();
 	QMetaObject::invokeMethod(this, "onPlayerClicked", Qt::DirectConnection, Q_ARG(std::shared_ptr<Player>, player));
 }
 //QMetaObject::invokeMethod(task, "doTask", Q_ARG(int, param));

@@ -23,6 +23,22 @@ void MainWindow::updateLists() {
 	ui.activePlayers->updateList(PlayerLists::actPlayers);
 }
 
+void MainWindow::updateNodesWithPlayer(std::string name) {
+	auto pair = playersNodes[name];
+	ui.allPlayers->updatePlayerWidget(pair.first.lock().get());
+	if (pair.second.lock()) {
+		ui.activePlayers->updatePlayerWidget(pair.second.lock().get());
+	}
+}														 
+
+void MainWindow::deleteNodesWithPlayer(std::string name) {
+	auto pair = playersNodes[name];
+	ui.allPlayers->deletePlayerWidget(pair.first.lock().get());
+	if (pair.second.lock()) {
+		ui.activePlayers->deletePlayerWidget(pair.second.lock().get());
+	}
+}
+
 void MainWindow::editPlayerButton(std::shared_ptr<Player> player) {
 	playerDialog->setData(player);
 	playerDialog->exec();
@@ -40,8 +56,14 @@ void MainWindow::addPlayerButton() {
 	std::shared_ptr<Player> data = playerDialog->getData();
 	if (playerDialog->result() == QDialog::Accepted) {
 		auto data = playerDialog->getData();
-		PlayerLists::addPlayer(data);
-		updateLists();
+		if (!PlayerLists::addPlayer(data))return; // if player not added(existing), leaving func
+		std::pair<
+			std::weak_ptr<QListWidgetItem>,
+			std::weak_ptr<QListWidgetItem>
+		> pair;
+		pair.first = ui.allPlayers->addPlayerWidget(data);
+
+		playersNodes[data->identity.name] = pair;
 	}
 }
 
@@ -52,7 +74,19 @@ void MainWindow::addActPlayerButton() {
 	if (playerDialog->result() == QDialog::Accepted) {
 		auto data = playerDialog->getData();
 		PlayerLists::addActivePlayer(data);
-		updateLists();
+
+		auto el = playersNodes.find(data->identity.name);
+		if (el != playersNodes.end()) {
+			el->second.second = ui.activePlayers->addPlayerWidget(data);
+			return;
+		}
+		std::pair<
+			std::weak_ptr<QListWidgetItem>,
+			std::weak_ptr<QListWidgetItem>
+		> pair;
+		pair.first = ui.allPlayers->addPlayerWidget(data);
+		pair.second = ui.activePlayers->addPlayerWidget(data);
+		playersNodes[data->identity.name] = pair;
 	}
 }
 

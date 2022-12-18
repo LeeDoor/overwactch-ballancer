@@ -3,6 +3,7 @@
 #include <QWidget>
 #include "ui_ScrollableSectionList.h"
 #include "EditProfileDialog.h"
+#include "PlayerNode.h"
 
 class ScrollableSectionList : public QWidget
 {
@@ -13,7 +14,11 @@ public:
 	~ScrollableSectionList();
 
 	//adds a widget with this player
-	void addPlayerWidget(std::weak_ptr<Player> player);
+	std::weak_ptr<QListWidgetItem> addPlayerWidget(std::weak_ptr<Player> player);
+	//updates current item from list
+	void updatePlayerWidget(QListWidgetItem* item);
+	//deletes current item from list
+	void deletePlayerWidget(QListWidgetItem* item);
 	//updates list with this vector of players
 	void updateList(std::vector<std::weak_ptr<Player>> players);
 	void updateList(std::vector<std::shared_ptr<Player>> players);
@@ -22,7 +27,7 @@ public:
 	//returns a pointer to selected player
 	std::shared_ptr<Player> getSelectedPlayer();
 	//returns a pointer to a player in given item
-	std::shared_ptr<Player> getPlayerWithItem(QListWidgetItem* item);
+	PlayerNode* getPlayerNodeWithItem(QListWidgetItem* item);
 
 public slots:
 	void onPlayerClickedSlot(QListWidgetItem* item);
