@@ -11,7 +11,5 @@ public:
 
 	bool operator == (Player player);
 	bool operator == (std::string uuid);
-
-	void update(Player p);
 };
 

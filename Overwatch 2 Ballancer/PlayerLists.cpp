@@ -39,7 +39,7 @@ bool PlayerLists::hasActivePlayer(std::shared_ptr<Player> player) {
 std::shared_ptr<Player> PlayerLists::editPlayer(std::string lastName, std::shared_ptr<Player> newPlayer) {
 	auto iter = allFindIter(lastName);
 	if (iter == allPlayers.end())return nullptr;
-	(* iter)->update(*newPlayer);
+	*(* iter) = (*newPlayer);
 	return *iter;
 }
 
@@ -60,45 +60,21 @@ bool PlayerLists::removeActPlayer(std::shared_ptr<Player> player) {
 }
 
 std::vector<std::shared_ptr<Player>>::iterator PlayerLists::allFindIter(std::shared_ptr<Player> p) {
-	return allFindIter(p->identity.uuid);
+	return allFindIter(p->identity.name);
 }
 std::vector<std::shared_ptr<Player>>::iterator PlayerLists::allFindIter(std::string name) {
 	return std::find_if(allPlayers.begin(), allPlayers.end(),
 		[&](std::shared_ptr<Player>& p) {
-			return (p->identity.uuid.compare(name) == 0);
+			return (p->identity.name.compare(name) == 0);
 		});
 }
 
 std::vector<std::weak_ptr<Player>>::iterator PlayerLists::actFindIter(std::shared_ptr<Player> p) {
-	return actFindIter(p->identity.uuid);
+	return actFindIter(p->identity.name);
 }
 std::vector<std::weak_ptr<Player>>::iterator PlayerLists::actFindIter(std::string name) {
 	return std::find_if(actPlayers.begin(), actPlayers.end(),
 		[&](std::weak_ptr<Player> p) { 
-			return p.lock()->identity.uuid.compare(name) == 0;
+			return p.lock()->identity.name.compare(name) == 0;
 		});
 }
-
-//void PlayerLists::updateAllWithJson(std::string path) {
-//	JSONParser p;
-//	JSON list = p.deserializePlayer(path);
-//	std::vector<std::shared_ptr<Player>> players;
-//	std::transform(list.players.begin(), list.players.end(), std::back_inserter(players),
-//		[](std::pair<const std::string, Player> p) { return std::make_shared<Player>(p.second); });
-//
-//	for (auto iter : players) {
-//		addPlayer(iter);
-//	}
-//}
-//
-//void PlayerLists::updateActWithJson(std::string path) {
-//	JSONParser p;
-//	JSON list = p.deserializePlayer(path);
-//	std::vector<std::shared_ptr<Player>> players;
-//	std::transform(list.players.begin(), list.players.end(), std::back_inserter(players),
-//		[](std::pair<const std::string, Player> p) { return std::make_shared<Player>(p.second); });
-//	
-//	for (auto iter : players) {
-//		addActivePlayer(iter);
-//	}
-//}

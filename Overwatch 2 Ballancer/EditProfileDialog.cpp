@@ -20,7 +20,6 @@ std::shared_ptr<Player> EditProfileDialog::getData() {
 	player->identity.isFullFlex = ui.fullFlexCheckBox->isChecked();
 	player->identity.isSquire = ui.squireCheckBox->isChecked();
 	player->identity.name = ui.nameLineEdit->text().toStdString();
-	player->identity.uuid = generateId();
 
 	player->stats.classes.dps.isActive = ui.isActiveDpsCheckBox->isChecked();
 	player->stats.classes.dps.primary = ui.firstPropDpsCheckBox->isChecked();
@@ -83,24 +82,4 @@ void EditProfileDialog::setData(std::shared_ptr<Player> player) {
 	ui.firstPropSupCheckBox->setChecked(player->stats.classes.support.primary);
 	ui.secondPropSupCheckBox->setChecked(player->stats.classes.support.secondary);
 	ui.rankSupLineEdit->setText(std::to_string(player->stats.classes.support.rank).c_str());
-}
-
-std::string EditProfileDialog::generateId() {
-	std::stringstream str;
-	for (int i = 0; i < 8; ++i) str << getChar(); 
-	for (int j = 0; j < 3; ++j) {
-		str << '-';
-		for (int i = 0; i < 4; ++i) str << getChar();
-	}
-	str << '-';
-	for (int i = 0; i < 12; ++i) str << getChar();
-	return str.str();
-}
-
-char EditProfileDialog::getChar() {
-	int val = rand() % 36;
-	if (val < 10) {
-		return '0' + val;
-	}
-	else return 'a' + val - 10;
 }
