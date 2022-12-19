@@ -68,17 +68,11 @@ void MainWindow::addActivePlayer(std::shared_ptr<Player> player) {
 void MainWindow::editPlayer(std::string uuid, std::shared_ptr<Player> player) {
 	PlayerLists::editPlayer(uuid, player);
 	///////////////
-	auto pair = playersNodes[uuid];
-	auto node1 = ui.allPlayers->getPlayerNodeWithItem(pair.first.get());
-	auto node2 = ui.activePlayers->getPlayerNodeWithItem(pair.second.get());
-	node1->setParams();
-	node2->setParams();
+	updateNodesWithPlayer(uuid);
 }
 
 void MainWindow::deletePlayer(std::shared_ptr<Player> player) {
-	auto pair = playersNodes[player->identity.uuid];
-	ui.activePlayers->deletePlayerWidget(pair.second.get());
-	ui.allPlayers->deletePlayerWidget(pair.first.get());
+	deleteNodesWithPlayer(player->identity.uuid);
 	playersNodes.erase(player->identity.uuid);
 	PlayerLists::removePlayer(player);
 }
@@ -86,6 +80,7 @@ void MainWindow::deletePlayer(std::shared_ptr<Player> player) {
 void MainWindow::deleteActivePlayer(std::shared_ptr<Player> player) {
 	auto iter = playersNodes[player->identity.uuid];
 	ui.activePlayers->deletePlayerWidget(iter.second.get());
+	playersNodes[player->identity.uuid].second = nullptr;
 	PlayerLists::removeActPlayer(player);
 }
 
@@ -102,8 +97,6 @@ void MainWindow::editPlayerButton(std::shared_ptr<Player> player) {
 	playerDialog->setData(player);
 	playerDialog->exec();
 	if (playerDialog->result() == QDialog::Accepted) {
-		auto data = playerDialog->getData();
-		if (*data == *player)return;
 		editPlayer(player->identity.uuid, playerDialog->getData());
 	}
 }

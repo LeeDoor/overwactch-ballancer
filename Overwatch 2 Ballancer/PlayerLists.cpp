@@ -39,7 +39,7 @@ bool PlayerLists::hasActivePlayer(std::shared_ptr<Player> player) {
 std::shared_ptr<Player> PlayerLists::editPlayer(std::string lastName, std::shared_ptr<Player> newPlayer) {
 	auto iter = allFindIter(lastName);
 	if (iter == allPlayers.end())return nullptr;
-	*(* iter) = *newPlayer;
+	(* iter)->update(*newPlayer);
 	return *iter;
 }
 
