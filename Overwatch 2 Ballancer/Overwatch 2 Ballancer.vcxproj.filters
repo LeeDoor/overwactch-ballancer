@@ -32,6 +32,12 @@
     <ClCompile Include="JSONParser.cpp">
       <Filter>model</Filter>
     </ClCompile>
+    <ClCompile Include="Team.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="BallanceCounter.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="model">
@@ -76,6 +82,15 @@
       <Filter>model\headers</Filter>
     </ClInclude>
     <ClInclude Include="Stats.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Team.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Roles.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BallanceCounter.h">
       <Filter>model\headers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,5 +8,8 @@ public:
 	bool isCaptain;
 	bool isSquire;
 	bool isFullFlex;
+
+	//ballance issues
+	bool isOffclass;
 };
 

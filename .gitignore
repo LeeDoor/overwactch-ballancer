@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+Global test/packages.config
+Global test/Global test.vcxproj
+Overwatch 2 Ballancer/Overwatch 2 Ballancer.vcxproj
+Overwatch 2 Ballancer/Overwatch 2 Ballancer.vcxproj.filters
+UnitTest/UnitTest.vcxproj.filters
+UnitTest/UnitTest.vcxproj

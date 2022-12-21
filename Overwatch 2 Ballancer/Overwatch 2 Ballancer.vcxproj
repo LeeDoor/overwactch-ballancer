@@ -95,6 +95,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BallanceCounter.cpp" />
     <ClCompile Include="Ballancer.cpp" />
     <ClCompile Include="BallancerSlot.cpp" />
     <ClCompile Include="BallanceSlotData.cpp" />
@@ -106,8 +107,12 @@
     <ClCompile Include="ScrollableSectionList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Team.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BallanceCounter.h" />
+    <ClInclude Include="Roles.h" />
+    <ClInclude Include="Team.h" />
     <QtMoc Include="Ballancer.h" />
     <QtMoc Include="BallancerSlot.h" />
     <ClInclude Include="BallanceSlotData.h" />
