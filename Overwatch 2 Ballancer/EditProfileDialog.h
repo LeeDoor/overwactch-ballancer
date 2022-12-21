@@ -18,5 +18,8 @@ public:
 	void resetData();
 	void setData(std::shared_ptr<Player> player);
 private:
+	char generateChar();
+	std::string generateId();
+
 	Ui::EditProfileDialogClass ui;
 };

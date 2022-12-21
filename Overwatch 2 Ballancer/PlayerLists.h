@@ -12,7 +12,7 @@ public:
 	//add player to list. return true if player added
 	//if successfully added, returns true, false overwise
 	static bool addPlayer(std::shared_ptr<Player> player);
-	static bool addActivePlayer(std::shared_ptr<Player> player);
+	static std::shared_ptr<Player> addActivePlayer(std::shared_ptr<Player> player);
 
 	//returns true if there is a given player in given list
 	static bool hasPlayer(std::shared_ptr<Player> player);

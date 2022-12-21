@@ -14,14 +14,15 @@ bool PlayerLists::addPlayer(std::shared_ptr<Player> player) {
 	return false;
 }
 
-bool PlayerLists::addActivePlayer(std::shared_ptr<Player> player) {
+std::shared_ptr<Player> PlayerLists::addActivePlayer(std::shared_ptr<Player> player) {
 	if (hasActivePlayer(player)) {
-		return false;
+		return nullptr;
 	}
 	else {
 		addPlayer(player);
-		actPlayers.push_back(*allFindIter(player));
-		return true;
+		std::shared_ptr<Player> pl = *allFindIter(player);
+		actPlayers.push_back(pl);
+		return pl;
 	}
 }
 
@@ -60,7 +61,7 @@ bool PlayerLists::removeActPlayer(std::shared_ptr<Player> player) {
 }
 
 std::vector<std::shared_ptr<Player>>::iterator PlayerLists::allFindIter(std::shared_ptr<Player> p) {
-	return allFindIter(p->identity.name);
+	return allFindIter(p->identity.name);//ne menat ta pk
 }
 std::vector<std::shared_ptr<Player>>::iterator PlayerLists::allFindIter(std::string name) {
 	return std::find_if(allPlayers.begin(), allPlayers.end(),

@@ -10,6 +10,8 @@ public:
 	std::string createdAt;
 
 	bool operator == (Player player);
-	bool operator == (std::string uuid);
+	bool operator == (std::string pk);
+
+	std::string PK();
 };
 

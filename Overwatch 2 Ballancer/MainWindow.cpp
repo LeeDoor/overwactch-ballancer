@@ -22,16 +22,16 @@ void MainWindow::updateLists() {
 	ui.activePlayers->updateList(PlayerLists::actPlayers);
 }
 
-void MainWindow::updateNodesWithPlayer(std::string name) {
-	auto pair = playersNodes[name];
+void MainWindow::updateNodesWithPlayer(std::string pk) {
+	auto pair = playersNodes[pk];
 	ui.allPlayers->updatePlayerWidget(pair.first.get());
 	if (pair.second) {
 		ui.activePlayers->updatePlayerWidget(pair.second.get());
 	}
 }														 
 
-void MainWindow::deleteNodesWithPlayer(std::string name) {
-	auto pair = playersNodes[name];
+void MainWindow::deleteNodesWithPlayer(std::string pk) {
+	auto pair = playersNodes[pk];
 	ui.allPlayers->deletePlayerWidget(pair.first.get());
 	if (pair.second) {
 		ui.activePlayers->deletePlayerWidget(pair.second.get());
@@ -46,15 +46,16 @@ void MainWindow::addPlayer(std::shared_ptr<Player> player) {
 	> pair;
 	pair.first = ui.allPlayers->addPlayerWidget(player);
 
-	playersNodes[player->identity.uuid] = pair;
+	playersNodes[player->PK()] = pair;
 }
 
 void MainWindow::addActivePlayer(std::shared_ptr<Player> player) {
-	PlayerLists::addActivePlayer(player);
+	std::shared_ptr<Player> playerToAdd = PlayerLists::addActivePlayer(player);
+	if (!playerToAdd)return;
 
-	auto el = playersNodes.find(player->identity.uuid);
+	auto el = playersNodes.find(player->PK());
 	if (el != playersNodes.end()) {
-		el->second.second = ui.activePlayers->addPlayerWidget(player);
+		playersNodes[player->PK()].second = ui.activePlayers->addPlayerWidget(playerToAdd);// this player has wrong ptr
 		return;
 	}
 	std::pair<
@@ -63,24 +64,22 @@ void MainWindow::addActivePlayer(std::shared_ptr<Player> player) {
 	> pair;
 	pair.first = ui.allPlayers->addPlayerWidget(player);
 	pair.second = ui.activePlayers->addPlayerWidget(player);
-	playersNodes[player->identity.uuid] = pair;
+	playersNodes[player->PK()] = pair;
 }
-void MainWindow::editPlayer(std::string uuid, std::shared_ptr<Player> player) {
-	PlayerLists::editPlayer(uuid, player);
-	///////////////
-	updateNodesWithPlayer(uuid);
+void MainWindow::editPlayer(std::string pk, std::shared_ptr<Player> player) {
+	updateNodesWithPlayer(PlayerLists::editPlayer(pk, player)->PK());
 }
 
 void MainWindow::deletePlayer(std::shared_ptr<Player> player) {
-	deleteNodesWithPlayer(player->identity.uuid);
-	playersNodes.erase(player->identity.uuid);
+	deleteNodesWithPlayer(player->PK());
+	playersNodes.erase(player->PK());
 	PlayerLists::removePlayer(player);
 }
 
 void MainWindow::deleteActivePlayer(std::shared_ptr<Player> player) {
-	auto iter = playersNodes[player->identity.uuid];
+	auto iter = playersNodes[player->PK()];
 	ui.activePlayers->deletePlayerWidget(iter.second.get());
-	playersNodes[player->identity.uuid].second = nullptr;
+	playersNodes[player->PK()].second = nullptr;
 	PlayerLists::removeActPlayer(player);
 }
 
@@ -97,7 +96,7 @@ void MainWindow::editPlayerButton(std::shared_ptr<Player> player) {
 	playerDialog->setData(player);
 	playerDialog->exec();
 	if (playerDialog->result() == QDialog::Accepted) {
-		editPlayer(player->identity.uuid, playerDialog->getData());
+		editPlayer(player->PK(), playerDialog->getData());
 	}
 }
 

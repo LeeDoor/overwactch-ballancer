@@ -1,10 +1,12 @@
 #include "Player.h"
 
 bool Player::operator==(Player player) {
-	return identity.name == player.identity.name;
+	return PK() == player.PK();
 }
 
 
-bool Player::operator==(std::string name) {
-	return identity.name == identity.name;
+bool Player::operator==(std::string pk) {
+	return PK() == pk;
 }
+
+std::string Player::PK() { return identity.name; }

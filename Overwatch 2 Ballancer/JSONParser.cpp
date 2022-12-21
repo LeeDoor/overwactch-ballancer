@@ -30,7 +30,7 @@ void from_json(const nlohmann::json& j, Player& p) {
 }
 void from_json(const nlohmann::json& j, Identity& i) {
 	j.at("name").get_to(i.name);
-	j.at("uuid").get<std::string>();
+	j.at("uuid").get_to(i.uuid);
 	j.at("isCaptain").get_to(i.isCaptain);
 	j.at("isSquire").get_to(i.isSquire);
 	j.at("isFullFlex").get_to(i.isFullFlex);
