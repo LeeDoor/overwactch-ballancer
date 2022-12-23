@@ -99,6 +99,7 @@
     <ClCompile Include="Ballancer.cpp" />
     <ClCompile Include="BallancerSlot.cpp" />
     <ClCompile Include="BallanceSlotData.cpp" />
+    <ClCompile Include="CapSquireMapper.cpp" />
     <ClCompile Include="EditProfileDialog.cpp" />
     <ClCompile Include="JSONParser.cpp" />
     <ClCompile Include="MainWindow.cpp" />

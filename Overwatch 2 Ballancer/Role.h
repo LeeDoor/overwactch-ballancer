@@ -1,4 +1,5 @@
 #pragma once
+#include "Roles.h"
 struct Role
 {
 public:
@@ -8,5 +9,6 @@ public:
 	bool primary;
 	bool isActive; 
 	bool secondary; 
+	Roles type;
 };
 

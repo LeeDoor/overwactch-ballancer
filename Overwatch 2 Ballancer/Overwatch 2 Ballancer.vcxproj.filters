@@ -38,6 +38,9 @@
     <ClCompile Include="BallanceCounter.cpp">
       <Filter>model</Filter>
     </ClCompile>
+    <ClCompile Include="CapSquireMapper.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="model">

@@ -12,6 +12,9 @@ public:
 	bool operator == (Player player);
 	bool operator == (std::string pk);
 
+	Player();
+
 	std::string PK();
+	Role* mainRole();
 };
 

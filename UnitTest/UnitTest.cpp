@@ -55,7 +55,6 @@ namespace UnitTest
 			r = t.getAverageRank();
 			Assert::IsTrue(isAverage(r, 2430.8), L"wrong average rank 3");
 		}
-
 		TEST_METHOD(TeamOffclassAmountTest)
 		{
 			Team t;
@@ -101,7 +100,6 @@ namespace UnitTest
 			tank->identity.isOffclass = false;
 			Assert::IsTrue(t.getOffclassAmount() == 2, L"wrong average rank 4");
 		}
-
 		TEST_METHOD(TeamOffclassDoubleTest)
 		{
 			Team t;
