@@ -22,7 +22,7 @@ private:
 	private:
 		TEAMS_TYPE teams;
 		PLAYERS_TYPE players;
-		std::unordered_map<PLAYER_TYPE, PLAYER_TYPE> map;// map with captain - squire players
+		std::vector<std::pair<PLAYER_TYPE, PLAYER_TYPE>> pairs;// vector with pair captain - squire players
 	public:
 		//begins mapping
 		void begin(TEAMS_TYPE teams, PLAYERS_TYPE players);
@@ -35,7 +35,8 @@ private:
 		//finds valid pair for iterated player. other keys required to not 
 		//swap their valid pairs
 		//returns true if succeed, false otherwise
-		bool findValidPair(PLAYERS_TYPE keys, std::vector<PLAYER_TYPE>::iterator it, int delt = 0);
+		bool findValidPair(PLAYERS_TYPE keys, int id, int delt = 1);
+		bool isFound(PLAYERS_TYPE keys, int curId, int compId);
 	};
 public:
 	BallanceCounter();

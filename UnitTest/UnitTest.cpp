@@ -1,8 +1,13 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../Overwatch 2 Ballancer/BallanceCounter.h"
+#include "../Overwatch 2 Ballancer/BallanceCounter.cpp"
+#include "../Overwatch 2 Ballancer/CapSquireMapper.cpp"
 #include "../Overwatch 2 Ballancer/Team.h"
+#include "../Overwatch 2 Ballancer/Player.h"
+#include "../Overwatch 2 Ballancer/Player.cpp"
 #include "../Overwatch 2 Ballancer/Team.cpp"
+#define add(a, b) pls->push_back(stat(a,b))
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -14,6 +19,7 @@ namespace UnitTest
 		bool isAverage(double given, double should) {
 			return given > should - 5 && given < should + 5;
 		}
+
 		TEST_METHOD(TeamRoleTest)
 		{
 			Team t;
@@ -144,6 +150,23 @@ namespace UnitTest
 			sup2->identity.isOffclass = false;
 			tank->identity.isOffclass = false;
 			Assert::IsTrue(t.getOffclassDouble() == 0, L"wrong average rank 4");
+		}
+
+		TEST_METHOD(BallanceMappingTest) {
+			BallanceCounter a;
+			PLAYERS_TYPE pls = std::make_shared<std::vector<PLAYER_TYPE>>();
+
+			add(Roles::Tank, 2000);
+			add(Roles::Tank, 1900);
+			add(Roles::Dps, 1500);
+			add(Roles::Dps, 2000);
+
+			add(Roles::Support, 500);
+			add(Roles::Dps, 500);
+			add(Roles::Support, 100);
+			add(Roles::Tank, 200);
+
+			a.ballance(pls);
 		}
 	};
 }

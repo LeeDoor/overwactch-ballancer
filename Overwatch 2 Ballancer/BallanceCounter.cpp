@@ -11,12 +11,20 @@ void BallanceCounter::setPlayers(PLAYERS_TYPE _players) {
 
 /// private
 PLAYERS_TYPE BallanceCounter::find_all(std::function<bool(PLAYER_TYPE&)> pred) {
-	PLAYERS_TYPE res;
-	std::for_each(players.begin(), players.end(),
+	PLAYERS_TYPE res = std::make_shared<std::vector<PLAYER_TYPE>>();
+	std::for_each(players->begin(), players->end(),
 		[&](PLAYER_TYPE& p) {
-			if (pred(p)) res.push_back(p);
+			if (pred(p)) res->push_back(p);
 		});
 	return res;
+}
+
+void BallanceCounter::teamsInit() {
+	teams = std::make_shared<std::vector<TEAM_TYPE>>();
+	int size = players->size() / 5;
+	for (int i = 0; i < size; ++i) {
+		teams->push_back(std::make_shared<Team>());
+	}
 }
 
 /// public
