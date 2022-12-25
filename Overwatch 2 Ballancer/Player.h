@@ -8,6 +8,7 @@ public:
 	Identity identity;
 	Stats stats;
 	std::string createdAt;
+	int isChosen; // is this player's role identified
 
 	bool operator == (Player player);
 	bool operator == (std::string pk);

@@ -35,14 +35,14 @@ int main(int argc, char *argv[])
 
 
 	add("Roles::Tank, 1000", Roles::Tank, 1000);
-	add("Roles::Tank, 1000", Roles::Tank, 1000);
+	add("Roles::Tank, 1000", Roles::Dps, 1500);
 	add("Roles::Dps, 1000", Roles::Dps, 1000);
 	add("Roles::Support, 1000", Roles::Support, 1000);
 	add("Roles::Support, 1000", Roles::Support, 1000);
-	add("Roles::Dps, 1000", Roles::Dps, 1000);
-	add("Roles::Tank, 1000", Roles::Tank, 1000);
-	add("Roles::Tank, 1000", Roles::Tank, 1000);
-	add("Roles::Tank, 1000", Roles::Tank, 1000);
+	add("Roles::Dps, 1000", Roles::Dps, 800);
+	add("Roles::Tank, 1000", Roles::Tank, 500);
+	add("Roles::Tank, 1000", Roles::Tank, 500);
+	add("Roles::Tank, 1000", Roles::Tank, 500);
 
 
 	add("Roles::Tank, 300", Roles::Tank, 300);    

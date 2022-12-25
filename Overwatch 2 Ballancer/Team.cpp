@@ -2,14 +2,17 @@
 
 void Team::addTank(PLAYER_TYPE p) {
 	players[TANK_ID] = p;
+	p->isChosen = true;
 }
 void Team::addDps(PLAYER_TYPE p) {
 	if (players[DPS1_ID]) players[DPS2_ID] = p;
 	else players[DPS1_ID] = p;
+	p->isChosen = true;
 }
 void Team::addSupport(PLAYER_TYPE p) {
 	if (players[SUP1_ID]) players[SUP2_ID] = p;
 	else players[SUP1_ID] = p;
+	p->isChosen = true;
 }
 void Team::addWithType(PLAYER_TYPE player) {
 	switch (player->mainRole()->type)

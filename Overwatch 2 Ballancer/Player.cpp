@@ -4,6 +4,7 @@ Player::Player() {
 	stats.classes.dps.type = Roles::Dps;
 	stats.classes.tank.type = Roles::Tank;
 	stats.classes.support.type = Roles::Support;
+	isChosen = false;
 }
 
 bool Player::operator==(Player player) {

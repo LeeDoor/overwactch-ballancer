@@ -14,7 +14,8 @@ private:
 	PLAYERS_TYPE players;
 	TEAMS_TYPE teams;
 
-	PLAYERS_TYPE find_all(std::function<bool(PLAYER_TYPE&)>);
+	PLAYERS_TYPE findAllPlayers(std::function<bool(PLAYER_TYPE&)> pred);
+	TEAMS_TYPE findAllTeams(std::function<bool(TEAM_TYPE&)> pred);
 	void teamsInit();
 
 	//class mapps squire and captain with given rules
@@ -38,11 +39,14 @@ private:
 		bool findValidPair(PLAYERS_TYPE keys, int id, int delt = 1);
 		bool isFound(PLAYERS_TYPE keys, int curId, int compId);
 	};
+
+	//filling teams with dps captain. they should have weak second dps
+	void fillDpsCaptain();
 public:
 	BallanceCounter();
 	BallanceCounter(PLAYERS_TYPE _players);
-
 	void setPlayers(PLAYERS_TYPE _players);
+
 	void ballance(PLAYERS_TYPE _players);
 };
 
