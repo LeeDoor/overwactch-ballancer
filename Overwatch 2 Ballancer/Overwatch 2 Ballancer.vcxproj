@@ -102,9 +102,11 @@
     <ClCompile Include="CapSquireMapper.cpp" />
     <ClCompile Include="EditProfileDialog.cpp" />
     <ClCompile Include="JSONParser.cpp" />
+    <ClCompile Include="MainRecursiveBallance.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="PlayerLists.cpp" />
     <ClCompile Include="PlayerNode.cpp" />
+    <ClCompile Include="PlayersTeamsManager.cpp" />
     <ClCompile Include="ScrollableSectionList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -112,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BallanceCounter.h" />
+    <ClInclude Include="PlayersTeamsManager.h" />
     <ClInclude Include="Roles.h" />
     <ClInclude Include="Team.h" />
     <QtMoc Include="Ballancer.h" />

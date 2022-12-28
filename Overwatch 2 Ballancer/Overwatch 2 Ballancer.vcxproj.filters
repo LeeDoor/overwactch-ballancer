@@ -41,6 +41,12 @@
     <ClCompile Include="CapSquireMapper.cpp">
       <Filter>model</Filter>
     </ClCompile>
+    <ClCompile Include="PlayersTeamsManager.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="MainRecursiveBallance.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="model">
@@ -94,6 +100,9 @@
       <Filter>model\headers</Filter>
     </ClInclude>
     <ClInclude Include="BallanceCounter.h">
+      <Filter>model\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayersTeamsManager.h">
       <Filter>model\headers</Filter>
     </ClInclude>
   </ItemGroup>
