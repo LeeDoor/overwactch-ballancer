@@ -2,32 +2,43 @@
 void BallanceCounter::MainRecursiveBallance::begin(
 	TEAMS_TYPE teams, PLAYERS_TYPE players, std::map<PLAYER_TYPE, bool> playersDone) {
 	ROLE_STATS roleStats = countRoleStats(teams, players);
-	analizing(roleStats, teams, players);
+	analizing(roleStats, teams, PlayersTeamsManager::findAllPlayers(players, [&](PLAYER_TYPE& p) {return p->isChosen; }));
 }
 
 void BallanceCounter::MainRecursiveBallance::analizing(
 	ROLE_STATS roleStats, TEAMS_TYPE teams, PLAYERS_TYPE players) {
 	float average = getAverageRank(teams); // average rank of all teams or all ballanced teams
-	float maxDev = average; // maximum deviation from average
-	int idDev = 0; // id of max deviated team
-	for (int i = 0; i < teams->size(); ++i) {
-		float curDev = (*teams)[i]->getAverageRank() - average;
-		if (abs(curDev) > abs(maxDev)) {
-			maxDev = curDev;
-			idDev = 0;
+
+	//first we need to ballance all players whos roles are more than needed
+	for (int i = 0; i < 3; ++i) {
+		auto curMainPl = PlayersTeamsManager::findAllPlayers(players, [&](PLAYER_TYPE& p) {
+			return p->mainRole()->type == i;
+		});
+		auto curTeams = PlayersTeamsManager::findAllTeams(teams, [&](TEAM_TYPE& t) {
+			return t->needed()[i] > 0;
+		});
+		for (int r = 0; 0 < roleStats[AR_SUM_MAIN][i]; ++r) {
+			std::vector<TEAM_TYPE>::iterator curTeam = std::max_element(curTeams->begin(), curTeams->end(), [&](TEAM_TYPE& t1, TEAM_TYPE& t2) {
+				return abs(average - t1->getAverageRank()) < abs(average - t2->getAverageRank());
+			}); // find team with most difference in average rank
+			std::vector<PLAYER_TYPE>::iterator curPlayer; // current player
+			if (average - (**curTeam).getAverageRank() < 0)  // if current team is the weakest find stronger player
+				curPlayer = std::max_element(curMainPl->begin(), curMainPl->end(), [&](PLAYER_TYPE& p1, PLAYER_TYPE& p2) {
+					return p1->mainRole()->rank < p2->mainRole()->rank;
+				});
+			//else find weakest player
+			else curPlayer = std::min_element(curMainPl->begin(), curMainPl->end(), [&](PLAYER_TYPE& p1, PLAYER_TYPE& p2) {
+					return p1->mainRole()->rank < p2->mainRole()->rank;
+				});
+			
+			(**curTeam).addWithType(*curPlayer);
+			if ((**curTeam).needed()[i] == 0) curTeams->erase(curTeam);
+			curMainPl->erase(curPlayer);
+			--roleStats[AR_SUM_MAIN][i];
+			--roleStats[AR_SUM_NEED][i];
 		}
 	}
-	PLAYER_TYPE adding;
-	if (maxDev < 0) {
-		adding = bestPlayerForTeam(players, (*teams)[idDev], average, [](float a, float b) {
-			return a < b; // mb mistake here
-		});
-	}
-	else {
-		adding = bestPlayerForTeam(players, (*teams)[idDev], average, [](float a, float b) {
-			return a > b; // mb mistake here
-			});
-	}
+
 }
 
 ROLE_STATS BallanceCounter::MainRecursiveBallance::countRoleStats(TEAMS_TYPE teams, PLAYERS_TYPE players) {
@@ -56,22 +67,8 @@ ROLE_STATS BallanceCounter::MainRecursiveBallance::countRoleStats(TEAMS_TYPE tea
 	return roleStats;
 }
 
-PLAYER_TYPE BallanceCounter::MainRecursiveBallance::bestPlayerForTeam
-(PLAYERS_TYPE players, TEAM_TYPE team, float average, std::function<bool(float, float)> pred) {
-	auto player = std::find(players->begin(), players->end(), [&](PLAYER_TYPE& player) {
-		return pred(player->mainRole()->rank, average) &&
-		team->needed()[player->mainRole()->type] != 0;
-	});
-	if (player == players->end()) {
-		auto allRequired = PlayersTeamsManager::findAllPlayers(players,
-			[&](PLAYER_TYPE& player) {
-				return team->needed()[player->mainRole()->type] != 0;
-			});
-		player = std::max_element(allRequired->begin(), allRequired->end(),
-			[&](PLAYER_TYPE& p1, PLAYER_TYPE& p2) {
-				return pred(p1->mainRole()->rank, p2->mainRole()->rank);
-			});
-	}
+PLAYER_TYPE BallanceCounter::MainRecursiveBallance::bestPlayerForTeam (PLAYERS_TYPE players, TEAM_TYPE team, float average) {
+	
 }
 
 float BallanceCounter::MainRecursiveBallance::getAverageRank(TEAMS_TYPE teams) {

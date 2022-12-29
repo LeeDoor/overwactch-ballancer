@@ -54,8 +54,7 @@ private:
 		// while there are some unballanced players
 		void analizing(ROLE_STATS roleStats, TEAMS_TYPE teams, PLAYERS_TYPE players);
 
-		PLAYER_TYPE bestPlayerForTeam(PLAYERS_TYPE players, TEAM_TYPE team, 
-			float average, std::function<bool(float, float)> pred);
+		PLAYER_TYPE bestPlayerForTeam(PLAYERS_TYPE players, TEAM_TYPE team, float average);
 
 		// counts average rank for every team and returns average rank for all teams
 		// if threre are some filled teams, returns average value for filled teams
