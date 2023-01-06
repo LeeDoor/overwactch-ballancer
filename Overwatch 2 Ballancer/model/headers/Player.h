@@ -1,7 +1,7 @@
 #pragma once
+#include <memory>
 #include "Identity.h"
 #include "Stats.h"
-
 struct Player
 {
 public:
@@ -18,4 +18,3 @@ public:
 	std::string PK();
 	Role* mainRole();
 };
-

@@ -23,3 +23,4 @@ Role* Player::mainRole() {
 	else if (stats.classes.tank.priority == 2) return &stats.classes.tank;
 	else if (stats.classes.support.priority == 2) return &stats.classes.support;
 }
+

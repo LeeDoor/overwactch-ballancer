@@ -2,51 +2,49 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainWindow.cpp">
+    <ClCompile Include="view\MainWindow.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerNode.cpp">
+    <ClCompile Include="view\PlayerNode.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="Ballancer.cpp">
+    <ClCompile Include="view\Ballancer.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="BallancerSlot.cpp">
+    <ClCompile Include="view\BallancerSlot.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="BallanceSlotData.cpp">
+    <ClCompile Include="view\BallanceSlotData.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="EditProfileDialog.cpp">
+    <ClCompile Include="view\EditProfileDialog.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="ScrollableSectionList.cpp">
+    <ClCompile Include="view\ScrollableSectionList.cpp">
       <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerLists.cpp">
+    <ClCompile Include="view\PlayerLists.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="model\Player.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="JSONParser.cpp">
+    <ClCompile Include="model\JSONParser.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="Team.cpp">
+    <ClCompile Include="model\Team.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="BallanceCounter.cpp">
+    <ClCompile Include="model\BallanceCounter.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="CapSquireMapper.cpp">
+    <ClCompile Include="model\CapSquireMapper.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="PlayersTeamsManager.cpp">
+    <ClCompile Include="model\MainRecursiveBallance.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="MainRecursiveBallance.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
+    <ClCompile Include="model\PList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="model">
@@ -66,83 +64,81 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Role.h">
+    <ClInclude Include="model\headers\Role.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="model\headers\Player.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="Identity.h">
+    <ClInclude Include="model\headers\Identity.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="Classes.h">
+    <ClInclude Include="model\headers\Classes.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="BallanceSlotData.h">
+    <ClInclude Include="view\header\BallanceSlotData.h">
       <Filter>view\headers</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerLists.h">
+    <ClInclude Include="view\header\PlayerLists.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="JSONParser.h">
+    <ClInclude Include="model\headers\JSONParser.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="JSON.h">
+    <ClInclude Include="model\headers\JSON.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="Stats.h">
+    <ClInclude Include="model\headers\Stats.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="Team.h">
+    <ClInclude Include="model\headers\Team.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="Roles.h">
+    <ClInclude Include="model\headers\Roles.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="BallanceCounter.h">
+    <ClInclude Include="model\headers\BallanceCounter.h">
       <Filter>model\headers</Filter>
     </ClInclude>
-    <ClInclude Include="PlayersTeamsManager.h">
-      <Filter>model\headers</Filter>
-    </ClInclude>
+    <ClInclude Include="model\headers\PList.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="MainWindow.h">
+    <QtMoc Include="view\header\MainWindow.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="PlayerNode.h">
+    <QtMoc Include="view\header\PlayerNode.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="ScrollableSectionList.h">
+    <QtMoc Include="view\header\ScrollableSectionList.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="Ballancer.h">
+    <QtMoc Include="view\header\Ballancer.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="BallancerSlot.h">
+    <QtMoc Include="view\header\BallancerSlot.h">
       <Filter>view\headers</Filter>
     </QtMoc>
-    <QtMoc Include="EditProfileDialog.h">
+    <QtMoc Include="view\header\EditProfileDialog.h">
       <Filter>view\headers</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="PlayerNode.ui">
+    <QtUic Include="view\ui\PlayerNode.ui">
       <Filter>view\ui</Filter>
     </QtUic>
-    <QtUic Include="MainWindow.ui">
+    <QtUic Include="view\ui\MainWindow.ui">
       <Filter>view\ui</Filter>
     </QtUic>
-    <QtUic Include="ScrollableSectionList.ui">
+    <QtUic Include="view\ui\ScrollableSectionList.ui">
       <Filter>view\ui</Filter>
     </QtUic>
-    <QtUic Include="Ballancer.ui">
+    <QtUic Include="view\ui\Ballancer.ui">
       <Filter>view\ui</Filter>
     </QtUic>
-    <QtUic Include="BallancerSlot.ui">
+    <QtUic Include="view\ui\BallancerSlot.ui">
       <Filter>view\ui</Filter>
     </QtUic>
-    <QtUic Include="EditProfileDialog.ui">
+    <QtUic Include="view\ui\EditProfileDialog.ui">
       <Filter>view\ui</Filter>
     </QtUic>
   </ItemGroup>

@@ -55,6 +55,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>D:\Projects\C++\Overwatch 2 Ballancer\Overwatch 2 Ballancer\view\header;D:\Projects\C++\Overwatch 2 Ballancer\Overwatch 2 Ballancer\model\headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -95,51 +96,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BallanceCounter.cpp" />
-    <ClCompile Include="Ballancer.cpp" />
-    <ClCompile Include="BallancerSlot.cpp" />
-    <ClCompile Include="BallanceSlotData.cpp" />
-    <ClCompile Include="CapSquireMapper.cpp" />
-    <ClCompile Include="EditProfileDialog.cpp" />
-    <ClCompile Include="JSONParser.cpp" />
-    <ClCompile Include="MainRecursiveBallance.cpp" />
-    <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="PlayerLists.cpp" />
-    <ClCompile Include="PlayerNode.cpp" />
-    <ClCompile Include="PlayersTeamsManager.cpp" />
-    <ClCompile Include="ScrollableSectionList.cpp" />
+    <ClCompile Include="model\BallanceCounter.cpp" />
+    <ClCompile Include="model\PList.cpp" />
+    <ClCompile Include="view\Ballancer.cpp" />
+    <ClCompile Include="view\BallancerSlot.cpp" />
+    <ClCompile Include="view\BallanceSlotData.cpp" />
+    <ClCompile Include="model\CapSquireMapper.cpp" />
+    <ClCompile Include="view\EditProfileDialog.cpp" />
+    <ClCompile Include="model\JSONParser.cpp" />
+    <ClCompile Include="model\MainRecursiveBallance.cpp" />
+    <ClCompile Include="view\MainWindow.cpp" />
+    <ClCompile Include="view\PlayerLists.cpp" />
+    <ClCompile Include="view\PlayerNode.cpp" />
+    <ClCompile Include="view\ScrollableSectionList.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Team.cpp" />
+    <ClCompile Include="model\Player.cpp" />
+    <ClCompile Include="model\Team.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BallanceCounter.h" />
-    <ClInclude Include="PlayersTeamsManager.h" />
-    <ClInclude Include="Roles.h" />
-    <ClInclude Include="Team.h" />
-    <QtMoc Include="Ballancer.h" />
-    <QtMoc Include="BallancerSlot.h" />
-    <ClInclude Include="BallanceSlotData.h" />
-    <QtMoc Include="EditProfileDialog.h" />
-    <ClInclude Include="Stats.h" />
-    <ClInclude Include="Identity.h" />
-    <QtMoc Include="MainWindow.h" />
-    <ClInclude Include="JSONParser.h" />
-    <ClInclude Include="Player.h" />
-    <QtMoc Include="PlayerNode.h" />
-    <ClInclude Include="PlayerLists.h" />
-    <ClInclude Include="JSON.h" />
-    <ClInclude Include="Role.h" />
-    <QtMoc Include="ScrollableSectionList.h" />
-    <ClInclude Include="Classes.h" />
+    <ClInclude Include="model\headers\BallanceCounter.h" />
+    <ClInclude Include="model\headers\Roles.h" />
+    <ClInclude Include="model\headers\Team.h" />
+    <QtMoc Include="view\header\Ballancer.h" />
+    <QtMoc Include="view\header\BallancerSlot.h" />
+    <ClInclude Include="model\headers\PList.h" />
+    <ClInclude Include="view\header\BallanceSlotData.h" />
+    <QtMoc Include="view\header\EditProfileDialog.h" />
+    <ClInclude Include="model\headers\Stats.h" />
+    <ClInclude Include="model\headers\Identity.h" />
+    <QtMoc Include="view\header\MainWindow.h" />
+    <ClInclude Include="model\headers\JSONParser.h" />
+    <ClInclude Include="model\headers\Player.h" />
+    <QtMoc Include="view\header\PlayerNode.h" />
+    <ClInclude Include="view\header\PlayerLists.h" />
+    <ClInclude Include="model\headers\JSON.h" />
+    <ClInclude Include="model\headers\Role.h" />
+    <QtMoc Include="view\header\ScrollableSectionList.h" />
+    <ClInclude Include="model\headers\Classes.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="Ballancer.ui" />
-    <QtUic Include="BallancerSlot.ui" />
-    <QtUic Include="EditProfileDialog.ui" />
-    <QtUic Include="MainWindow.ui" />
-    <QtUic Include="PlayerNode.ui" />
-    <QtUic Include="ScrollableSectionList.ui" />
+    <QtUic Include="view\ui\Ballancer.ui" />
+    <QtUic Include="view\ui\BallancerSlot.ui" />
+    <QtUic Include="view\ui\EditProfileDialog.ui" />
+    <QtUic Include="view\ui\MainWindow.ui" />
+    <QtUic Include="view\ui\PlayerNode.ui" />
+    <QtUic Include="view\ui\ScrollableSectionList.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

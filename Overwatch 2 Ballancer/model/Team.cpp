@@ -4,24 +4,24 @@ float Team::getAverageRank() {
 	return averageRank;
 }
 
-void Team::addTank(PLAYER_TYPE p) {
+void Team::addTank(std::shared_ptr<Player> p) {
 	players[TANK_ID] = p;
 	p->isChosen = true;
 	countAverageRank();
 }
-void Team::addDps(PLAYER_TYPE p) {
+void Team::addDps(std::shared_ptr<Player> p) {
 	if (players[DPS1_ID]) players[DPS2_ID] = p;
 	else players[DPS1_ID] = p;
 	p->isChosen = true;
 	countAverageRank();
 }
-void Team::addSupport(PLAYER_TYPE p) {
+void Team::addSupport(std::shared_ptr<Player> p) {
 	if (players[SUP1_ID]) players[SUP2_ID] = p;
 	else players[SUP1_ID] = p;
 	p->isChosen = true;
 	countAverageRank();
 }
-void Team::addWithType(PLAYER_TYPE player) {
+void Team::addWithType(std::shared_ptr<Player> player) {
 	switch (player->mainRole()->type)
 	{
 	case Tank:
@@ -38,11 +38,11 @@ void Team::addWithType(PLAYER_TYPE player) {
 
 void Team::countAverageRank() {
 	int averageRank = 0;
-	averageRank += players[TANK_ID]->stats.classes.tank.rank;
-	averageRank += players[DPS1_ID]->stats.classes.dps.rank;
-	averageRank += players[DPS2_ID]->stats.classes.dps.rank;
-	averageRank += players[SUP1_ID]->stats.classes.support.rank;
-	averageRank += players[SUP2_ID]->stats.classes.support.rank;
+	if(players[TANK_ID])averageRank += players[TANK_ID]->stats.classes.tank.rank;
+	if(players[DPS1_ID])averageRank += players[DPS1_ID]->stats.classes.dps.rank;
+	if(players[DPS2_ID])averageRank += players[DPS2_ID]->stats.classes.dps.rank;
+	if(players[SUP1_ID])averageRank += players[SUP1_ID]->stats.classes.support.rank;
+	if(players[SUP2_ID])averageRank += players[SUP2_ID]->stats.classes.support.rank;
 	averageRank *= 0.2f;
 }
 int Team::getOffclassAmount() {
@@ -60,7 +60,7 @@ int Team::getLowrankDouble() {
 }
 
 std::array<int, 3> Team::needed() {
-	std::array<int, 3> res;
+	std::array<int, 3> res{};
 	if (!players[TANK_ID]) ++res[0];
 	if (!players[DPS1_ID]) ++res[1];
 	if (!players[DPS2_ID]) ++res[1];

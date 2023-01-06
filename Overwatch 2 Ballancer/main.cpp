@@ -5,12 +5,12 @@
 #include <ctime>
 #define add(n, a, b) pls->push_back(stat(n, a, b))
 
-PLAYER_TYPE stat(std::string name, Roles role, int rank) {
-	PLAYER_TYPE pl = std::make_shared<Player>();
+std::shared_ptr<Player> stat(std::string name, Roles role, int rank) {
+	std::shared_ptr<Player> pl = std::make_shared<Player>();
 	switch (role)
 	{
 	case Tank:
-		pl->stats.classes.tank.priority = 2;
+		pl.get()->stats.classes.tank.priority = 2;
 		break;
 	case Dps:
 		pl->stats.classes.dps.priority = 2;
@@ -27,7 +27,7 @@ PLAYER_TYPE stat(std::string name, Roles role, int rank) {
 int main(int argc, char *argv[])
 {
 	BallanceCounter a;
-	PLAYERS_TYPE pls = std::make_shared<std::vector<PLAYER_TYPE>>();
+	PList<std::shared_ptr<Player>> pls;
 
 	add("Roles::Dps, 4000", Roles::Dps, 4000); // 300
 	add("Roles::Tank, 3000", Roles::Tank, 3000); // 200
@@ -45,9 +45,9 @@ int main(int argc, char *argv[])
 	add("Roles::Tank, 1000", Roles::Tank, 500);
 
 
-	add("Roles::Tank, 300", Roles::Tank, 300);    
-	add("Roles::Support, 200", Roles::Support, 200); 
-	add("Roles::Support, 100", Roles::Support, 100);
+	//add("Roles::Tank, 300", Roles::Tank, 300);    
+	//add("Roles::Support, 200", Roles::Support, 200); 
+	//add("Roles::Support, 100", Roles::Support, 100);
 
 	a.ballance(pls);
     /*srand(time(NULL));

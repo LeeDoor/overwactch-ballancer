@@ -4,10 +4,7 @@
 #include <vector>
 #include "Player.h"
 #include "Roles.h"
-#include "BallanceCounter.h"
-
-typedef std::shared_ptr<Player> PLAYER_TYPE;
-typedef std::shared_ptr<std::vector<PLAYER_TYPE>> PLAYERS_TYPE;
+#include "PList.h"
 
 #define TANK_ID 0
 #define DPS1_ID 1
@@ -18,7 +15,7 @@ typedef std::shared_ptr<std::vector<PLAYER_TYPE>> PLAYERS_TYPE;
 class Team
 {
 private:
-	std::array<PLAYER_TYPE, 5> players;
+	std::array<std::shared_ptr<Player>, 5> players;
 	float averageRank;
 
 	void countAverageRank();
@@ -28,10 +25,10 @@ public:
 
 	float getAverageRank();
 
-	void addTank(PLAYER_TYPE player);
-	void addDps(PLAYER_TYPE player);
-	void addSupport(PLAYER_TYPE player);
-	void addWithType(PLAYER_TYPE player);
+	void addTank(std::shared_ptr<Player> player);
+	void addDps(std::shared_ptr<Player> player);
+	void addSupport(std::shared_ptr<Player> player);
+	void addWithType(std::shared_ptr<Player> player);
 
 	int getOffclassAmount();
 	int getOffclassDouble();
@@ -39,4 +36,3 @@ public:
 	std::array<int, 3> needed();
 	bool isFilled();
 };
-
